@@ -26,8 +26,6 @@
         .tab-btn.outline:hover { border-color:var(--gold); color:var(--gold); }
         .page { display:none; }
         .page.active { display:block; }
-
-        /* SCANNER */
         .hero { text-align:center; padding:70px 20px 50px; position:relative; overflow:hidden; }
         .hero::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(245,166,35,0.08) 0%,transparent 70%); pointer-events:none; }
         .hero-badge { display:inline-block; background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.3); color:var(--gold); padding:6px 18px; border-radius:20px; font-size:12px; font-weight:600; letter-spacing:1px; margin-bottom:24px; }
@@ -78,8 +76,6 @@
         .feat .f-icon { font-size:28px; margin-bottom:8px; }
         .feat h4 { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--white); margin-bottom:4px; }
         .feat p { font-size:11px; color:var(--gray); }
-
-        /* JOURNAL */
         .page-hero { text-align:center; padding:50px 20px 30px; }
         .page-hero h2 { font-family:'Syne',sans-serif; font-size:38px; font-weight:800; margin-bottom:10px; }
         .page-hero h2 span { background:linear-gradient(90deg,var(--gold),var(--terra)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -93,7 +89,6 @@
         .input-group input:focus,.input-group select:focus { border-color:var(--gold); }
         .input-group select option { background:var(--dark3); }
         .add-btn { width:100%; padding:12px; background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; border:none; border-radius:10px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.3s; }
-        .add-btn:hover { transform:translateY(-1px); }
         .plant-list-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
         .plant-item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:10px; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; gap:12px; }
         .plant-item:hover { border-color:var(--gold); }
@@ -131,13 +126,10 @@
         .entry-note { font-size:14px; color:#ccc; line-height:1.6; margin-bottom:10px; }
         .entry-photo img { max-width:100%; max-height:200px; border-radius:10px; object-fit:cover; border:1px solid var(--border); }
         .no-entries { text-align:center; padding:30px; color:var(--gray); font-size:14px; }
-
-        /* CALENDAR & FERTILIZER */
         .cal-main { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
         .crop-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:14px; margin-bottom:30px; }
         .crop-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; text-align:center; cursor:pointer; transition:all 0.3s; }
         .crop-card:hover { border-color:var(--gold); transform:translateY(-2px); }
-        .crop-card.selected { border-color:var(--gold); background:rgba(245,166,35,0.05); }
         .crop-card .c-emoji { font-size:36px; margin-bottom:8px; }
         .crop-card h4 { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--white); }
         .crop-card p { font-size:11px; color:var(--gray); margin-top:3px; }
@@ -154,17 +146,105 @@
         .months-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
         .month-badge { background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600; }
         .harvest-badge { background:linear-gradient(135deg,#1B5E20,#2E7D32); }
-        .scanner-badge { background:linear-gradient(135deg,#0D47A1,#1565C0); font-size:10px; padding:2px 8px; border-radius:8px; }
         .tips-box { background:linear-gradient(135deg,rgba(76,175,80,0.08),rgba(151,188,98,0.05)); border:1px solid rgba(76,175,80,0.2); border-left:4px solid var(--lime); border-radius:12px; padding:16px; }
         .tips-box h4 { font-family:'Syne',sans-serif; font-size:13px; color:var(--lime); margin-bottom:8px; }
         .tips-box p { color:#ccc; font-size:14px; line-height:1.6; }
         .back-btn { display:inline-block; margin-bottom:20px; padding:10px 20px; background:transparent; color:var(--gold); border:1px solid var(--gold); border-radius:10px; font-family:'Syne',sans-serif; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.3s; }
         .back-btn:hover { background:rgba(245,166,35,0.08); }
-        .in-scanner { display:inline-block; background:rgba(21,101,192,0.15); border:1px solid rgba(21,101,192,0.3); color:#90CAF9; padding:4px 10px; border-radius:8px; font-size:11px; margin-top:6px; }
+        .in-scanner { display:inline-block; padding:4px 10px; border-radius:8px; font-size:11px; margin-top:6px; }
+        .demand-main { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
+        .region-selector { margin-bottom:30px; }
+        .region-selector label { display:block; font-size:13px; color:var(--gray); margin-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+        .region-select { width:100%; padding:14px 18px; background:var(--card); border:1px solid var(--border); border-radius:14px; color:var(--white); font-family:'Outfit',sans-serif; font-size:15px; outline:none; cursor:pointer; transition:border-color 0.3s; }
+        .region-select:focus { border-color:var(--gold); }
+        .region-select option { background:var(--dark3); }
+        .demand-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
+        .demand-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; transition:all 0.3s; }
+        .demand-card:hover { border-color:var(--gold); transform:translateY(-2px); }
+        .demand-card-top { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+        .demand-emoji { font-size:40px; }
+        .demand-info h3 { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:var(--white); }
+        .demand-info p { font-size:12px; color:var(--gray); margin-top:2px; }
+        .trend-badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:10px; }
+        .trend-up { background:rgba(76,175,80,0.15); border:1px solid rgba(76,175,80,0.3); color:#81C784; }
+        .trend-hot { background:rgba(245,166,35,0.15); border:1px solid rgba(245,166,35,0.3); color:var(--gold); }
+        .trend-stable { background:rgba(100,100,100,0.15); border:1px solid rgba(100,100,100,0.3); color:var(--gray); }
+        .demand-reason { font-size:13px; color:#ccc; line-height:1.6; margin-bottom:12px; }
+        .price-row { display:flex; justify-content:space-between; align-items:center; background:var(--dark3); border-radius:10px; padding:10px 14px; }
+        .price-label { font-size:11px; color:var(--gray); }
+        .price-value { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--gold); }
+
+        /* SOIL ADVISOR */
+        .soil-main { max-width:900px; margin:0 auto; padding:30px 20px 60px; }
+        .soil-selector { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:30px; }
+        .soil-select-group label { display:block; font-size:12px; color:var(--gray); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; }
+        .soil-select { width:100%; padding:14px 18px; background:var(--card); border:1px solid var(--border); border-radius:14px; color:var(--white); font-family:'Outfit',sans-serif; font-size:14px; outline:none; cursor:pointer; transition:border-color 0.3s; }
+        .soil-select:focus { border-color:var(--gold); }
+        .soil-select option { background:var(--dark3); }
+        .soil-btn { width:100%; padding:16px; background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; border:none; border-radius:14px; font-family:'Syne',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s; margin-bottom:30px; }
+        .soil-btn:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(245,166,35,0.3); }
+        .soil-result { display:none; }
+        .soil-result-header { background:linear-gradient(135deg,#0a1a0a,#0a2010); border:1px solid rgba(76,175,80,0.3); border-radius:20px 20px 0 0; padding:24px; display:flex; align-items:center; gap:16px; }
+        .soil-icon { width:60px; height:60px; background:linear-gradient(135deg,var(--lime),#2E7D32); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+        .soil-result-header h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; }
+        .soil-result-header p { color:var(--lime); font-size:13px; margin-top:3px; }
+        .soil-result-body { background:var(--card); border:1px solid var(--border); border-top:none; border-radius:0 0 20px 20px; padding:24px; }
+        .soil-info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }
+        .soil-info-box { background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center; }
+        .soil-info-box .s-label { font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+        .soil-info-box .s-value { font-size:15px; font-weight:700; color:var(--white); }
+        .soil-crops-title { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--gold); margin-bottom:16px; }
+        .soil-crop-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:24px; }
+        .soil-crop-card { background:var(--dark3); border:1px solid var(--border); border-radius:14px; padding:18px; text-align:center; transition:all 0.3s; }
+        .soil-crop-card:hover { border-color:var(--lime); }
+        .soil-crop-card .sc-rank { background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; margin:0 auto 10px; }
+        .soil-crop-card .sc-emoji { font-size:36px; margin-bottom:8px; }
+        .soil-crop-card h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white); margin-bottom:4px; }
+        .soil-crop-card p { font-size:11px; color:var(--lime); margin-bottom:6px; }
+        .soil-crop-card small { font-size:11px; color:var(--gray); line-height:1.4; display:block; }
+        .soil-tips { background:linear-gradient(135deg,rgba(76,175,80,0.08),rgba(151,188,98,0.05)); border:1px solid rgba(76,175,80,0.2); border-left:4px solid var(--lime); border-radius:12px; padding:18px; }
+        .soil-tips h4 { font-family:'Syne',sans-serif; font-size:14px; color:var(--lime); margin-bottom:12px; }
+        .soil-tips ul { list-style:none; }
+        .soil-tips ul li { color:#ccc; font-size:14px; line-height:1.6; padding:4px 0; padding-left:20px; position:relative; }
+        .soil-tips ul li::before { content:'✓'; position:absolute; left:0; color:var(--lime); font-weight:700; }
+
+        /* YIELD TIPS */
+        .yield-main { max-width:900px; margin:0 auto; padding:30px 20px 60px; }
+        .yield-crop-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; margin-bottom:30px; }
+        .yield-crop-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; text-align:center; cursor:pointer; transition:all 0.3s; }
+        .yield-crop-card:hover { border-color:var(--gold); transform:translateY(-2px); }
+        .yield-crop-card.selected { border-color:var(--gold); background:rgba(245,166,35,0.05); }
+        .yield-crop-card .yc-emoji { font-size:40px; margin-bottom:8px; }
+        .yield-crop-card h4 { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--white); }
+        .yield-detail { display:none; }
+        .yield-header { background:linear-gradient(135deg,#1a1200,#1a0800); border:1px solid var(--border); border-radius:20px 20px 0 0; padding:24px; display:flex; align-items:center; gap:16px; }
+        .yield-emoji-big { font-size:52px; }
+        .yield-header h2 { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; }
+        .yield-header p { color:var(--gold); font-size:13px; margin-top:3px; }
+        .yield-body { background:var(--card); border:1px solid var(--border); border-top:none; border-radius:0 0 20px 20px; padding:24px; }
+        .yield-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }
+        .yield-stat-box { background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center; }
+        .yield-stat-box .ys-label { font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+        .yield-stat-box .ys-value { font-size:16px; font-weight:700; color:var(--gold); }
+        .yield-section { margin-bottom:20px; }
+        .yield-section-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--gold); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+        .yield-tip-card { background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:10px; display:flex; gap:14px; align-items:flex-start; }
+        .yield-tip-card .tip-num { background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; margin-top:2px; }
+        .yield-tip-card .tip-content h5 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white); margin-bottom:4px; }
+        .yield-tip-card .tip-content p { font-size:13px; color:#aaa; line-height:1.6; }
+        .yield-warning { background:rgba(193,68,14,0.1); border:1px solid rgba(193,68,14,0.3); border-left:4px solid var(--terra); border-radius:12px; padding:16px; margin-bottom:10px; }
+        .yield-warning h5 { font-family:'Syne',sans-serif; font-size:13px; color:var(--terra); margin-bottom:4px; }
+        .yield-warning p { font-size:13px; color:#aaa; line-height:1.6; }
 
         footer { border-top:1px solid var(--border); text-align:center; padding:30px 20px; color:var(--gray); font-size:13px; }
         footer strong { background:linear-gradient(90deg,var(--gold),var(--lime)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        @media(max-width:768px) { .journal-main { grid-template-columns:1fr; } .navbar { padding:15px 20px; } .detail-grid { grid-template-columns:1fr; } .hero h2 { font-size:32px; } }
+        @media(max-width:768px) {
+            .journal-main,.soil-selector,.soil-info-grid,.soil-crop-cards,.yield-stats { grid-template-columns:1fr; }
+            .soil-crop-cards { grid-template-columns:1fr 1fr; }
+            .navbar { padding:15px 20px; }
+            .detail-grid { grid-template-columns:1fr; }
+            .hero h2 { font-size:32px; }
+        }
     </style>
 </head>
 <body>
@@ -184,6 +264,9 @@
         <button class="tab-btn outline" onclick="showPage('journal',this)">📷 Journal</button>
         <button class="tab-btn outline" onclick="showPage('calendar',this)">📅 Calendar</button>
         <button class="tab-btn outline" onclick="showPage('fertilizer',this)">🧪 Fertilizer</button>
+        <button class="tab-btn outline" onclick="showPage('demand',this)">📊 Market</button>
+        <button class="tab-btn outline" onclick="showPage('soil',this)">🌱 Soil Advisor</button>
+        <button class="tab-btn outline" onclick="showPage('yield',this)">📈 Yield Tips</button>
     </div>
 </div>
 
@@ -370,6 +453,253 @@
     </div>
 </div>
 
+<!-- CROPS IN DEMAND -->
+<div class="page" id="page-demand">
+    <div class="page-hero">
+        <div class="hero-badge">✦ MARKET INTELLIGENCE</div>
+        <h2>Crops in <span>Demand This Season</span></h2>
+        <p>Select your country — see which crops are selling well right now with real prices</p>
+    </div>
+    <div class="demand-main">
+        <div class="region-selector">
+            <label>🌍 Select Your Country</label>
+            <select class="region-select" id="regionSelect" onchange="showDemand()">
+                <option value="">-- Choose your country --</option>
+                <optgroup label="🌍 East Africa">
+                    <option value="kenya">🇰🇪 Kenya (KES)</option>
+                    <option value="tanzania">🇹🇿 Tanzania (TZS)</option>
+                    <option value="uganda">🇺🇬 Uganda (UGX)</option>
+                    <option value="ethiopia">🇪🇹 Ethiopia (ETB)</option>
+                    <option value="rwanda">🇷🇼 Rwanda (RWF)</option>
+                </optgroup>
+                <optgroup label="🌍 West Africa">
+                    <option value="nigeria">🇳🇬 Nigeria (NGN)</option>
+                    <option value="ghana">🇬🇭 Ghana (GHS)</option>
+                    <option value="ivory_coast">🇨🇮 Ivory Coast (XOF)</option>
+                    <option value="senegal">🇸🇳 Senegal (XOF)</option>
+                </optgroup>
+                <optgroup label="🌍 North Africa">
+                    <option value="egypt">🇪🇬 Egypt (EGP)</option>
+                    <option value="morocco">🇲🇦 Morocco (MAD)</option>
+                    <option value="tunisia">🇹🇳 Tunisia (TND)</option>
+                </optgroup>
+                <optgroup label="🌍 Southern Africa">
+                    <option value="south_africa">🇿🇦 South Africa (ZAR)</option>
+                    <option value="zimbabwe">🇿🇼 Zimbabwe (USD)</option>
+                    <option value="zambia">🇿🇲 Zambia (ZMW)</option>
+                </optgroup>
+                <optgroup label="🌎 North America">
+                    <option value="usa">🇺🇸 United States (USD)</option>
+                    <option value="canada">🇨🇦 Canada (CAD)</option>
+                </optgroup>
+                <optgroup label="🌎 Latin America">
+                    <option value="brazil">🇧🇷 Brazil (BRL)</option>
+                    <option value="mexico">🇲🇽 Mexico (MXN)</option>
+                    <option value="colombia">🇨🇴 Colombia (COP)</option>
+                    <option value="peru">🇵🇪 Peru (PEN)</option>
+                    <option value="chile">🇨🇱 Chile (CLP)</option>
+                </optgroup>
+                <optgroup label="🇪🇺 Europe">
+                    <option value="uk">🇬🇧 United Kingdom (GBP)</option>
+                    <option value="germany">🇩🇪 Germany (EUR)</option>
+                    <option value="france">🇫🇷 France (EUR)</option>
+                    <option value="spain">🇪🇸 Spain (EUR)</option>
+                    <option value="italy">🇮🇹 Italy (EUR)</option>
+                    <option value="netherlands">🇳🇱 Netherlands (EUR)</option>
+                    <option value="poland">🇵🇱 Poland (PLN)</option>
+                    <option value="ukraine">🇺🇦 Ukraine (UAH)</option>
+                </optgroup>
+                <optgroup label="🌏 East Asia">
+                    <option value="japan">🇯🇵 Japan (JPY)</option>
+                    <option value="south_korea">🇰🇷 South Korea (KRW)</option>
+                    <option value="china">🇨🇳 China (CNY)</option>
+                    <option value="taiwan">🇹🇼 Taiwan (TWD)</option>
+                </optgroup>
+                <optgroup label="🌏 South Asia">
+                    <option value="india">🇮🇳 India (INR)</option>
+                    <option value="pakistan">🇵🇰 Pakistan (PKR)</option>
+                    <option value="bangladesh">🇧🇩 Bangladesh (BDT)</option>
+                    <option value="sri_lanka">🇱🇰 Sri Lanka (LKR)</option>
+                </optgroup>
+                <optgroup label="🌏 Southeast Asia">
+                    <option value="indonesia">🇮🇩 Indonesia (IDR)</option>
+                    <option value="thailand">🇹🇭 Thailand (THB)</option>
+                    <option value="vietnam">🇻🇳 Vietnam (VND)</option>
+                    <option value="malaysia">🇲🇾 Malaysia (MYR)</option>
+                    <option value="philippines">🇵🇭 Philippines (PHP)</option>
+                </optgroup>
+                <optgroup label="🌙 Middle East">
+                    <option value="saudi_arabia">🇸🇦 Saudi Arabia (SAR)</option>
+                    <option value="uae">🇦🇪 UAE (AED)</option>
+                    <option value="qatar">🇶🇦 Qatar (QAR)</option>
+                    <option value="jordan">🇯🇴 Jordan (JOD)</option>
+                </optgroup>
+                <optgroup label="🌊 Oceania">
+                    <option value="australia">🇦🇺 Australia (AUD)</option>
+                    <option value="new_zealand">🇳🇿 New Zealand (NZD)</option>
+                </optgroup>
+            </select>
+        </div>
+        <div id="demandLoading" style="display:none;text-align:center;padding:40px;color:var(--gray);">
+            <div class="spinner" style="margin:0 auto 16px;"></div>
+            <p>Loading real market prices...</p>
+        </div>
+        <div class="demand-grid" id="demandGrid">
+            <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray);">
+                <div style="font-size:48px;margin-bottom:16px;">🌍</div>
+                <p style="font-size:16px;">Select your country above to see which crops are in demand this season</p>
+            </div>
+        </div>
+        <div id="demandUpdated"></div>
+    </div>
+</div>
+
+<!-- SOIL ADVISOR -->
+<div class="page" id="page-soil">
+    <div class="page-hero">
+        <div class="hero-badge">✦ SOIL INTELLIGENCE</div>
+        <h2>Best Crops for <span>Your Soil Type</span></h2>
+        <p>Tell us about your soil — get the top 3 crops that will grow best on your land</p>
+    </div>
+    <div class="soil-main">
+        <div class="soil-selector">
+            <div class="soil-select-group">
+                <label>🌍 Your Region / Climate</label>
+                <select class="soil-select" id="soilRegion">
+                    <option value="">Select your region...</option>
+                    <optgroup label="🌍 Africa">
+                        <option value="east_africa_highlands">East Africa — Highlands (Kenya, Ethiopia, Rwanda)</option>
+                        <option value="east_africa_lowlands">East Africa — Lowlands (Coast, Lake Victoria)</option>
+                        <option value="west_africa_savanna">West Africa — Savanna (Nigeria, Ghana, Senegal)</option>
+                        <option value="west_africa_forest">West Africa — Forest Zone (Ivory Coast, Cameroon)</option>
+                        <option value="north_africa">North Africa — Nile Valley & Mediterranean (Egypt, Morocco)</option>
+                        <option value="southern_africa">Southern Africa (South Africa, Zimbabwe, Zambia)</option>
+                        <option value="sahel">Sahel — Semi-Arid Zone (Niger, Mali, Burkina Faso)</option>
+                    </optgroup>
+                    <optgroup label="🌏 Asia">
+                        <option value="south_asia_plains">South Asia — Indo-Gangetic Plains (India, Pakistan, Bangladesh)</option>
+                        <option value="south_asia_deccan">South Asia — Deccan Plateau (South India)</option>
+                        <option value="southeast_asia_tropical">Southeast Asia — Tropical (Indonesia, Philippines, Vietnam)</option>
+                        <option value="east_asia_temperate">East Asia — Temperate (Japan, Korea, China North)</option>
+                        <option value="central_asia_steppe">Central Asia — Steppe (Kazakhstan, Uzbekistan)</option>
+                    </optgroup>
+                    <optgroup label="🌎 Americas">
+                        <option value="north_america_midwest">North America — Midwest Corn Belt (USA, Canada)</option>
+                        <option value="north_america_south">North America — South (Southern USA, Mexico)</option>
+                        <option value="latin_america_tropical">Latin America — Tropical (Brazil, Colombia, Peru)</option>
+                        <option value="latin_america_temperate">Latin America — Temperate (Chile, Argentina)</option>
+                    </optgroup>
+                    <optgroup label="🇪🇺 Europe">
+                        <option value="western_europe">Western Europe (UK, France, Germany, Netherlands)</option>
+                        <option value="southern_europe_mediterranean">Southern Europe — Mediterranean (Spain, Italy, Greece)</option>
+                        <option value="eastern_europe">Eastern Europe (Poland, Ukraine, Romania)</option>
+                    </optgroup>
+                    <optgroup label="🌊 Oceania">
+                        <option value="australia_temperate">Australia — Temperate South</option>
+                        <option value="australia_tropical">Australia — Tropical North</option>
+                        <option value="new_zealand">New Zealand</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="soil-select-group">
+                <label>🟤 Soil Color & Type</label>
+                <select class="soil-select" id="soilColor">
+                    <option value="">Select your soil type...</option>
+                    <option value="red_clay">🔴 Red Clay Soil — Heavy, sticky when wet</option>
+                    <option value="black_cotton">⚫ Black Cotton Soil — Cracks when dry, sticky wet</option>
+                    <option value="brown_loam">🟤 Brown Loam — Soft, crumbly, rich look</option>
+                    <option value="sandy">🟡 Sandy Soil — Light, drains fast, gritty feel</option>
+                    <option value="grey_clay">⚪ Grey/White Clay — Heavy, waterlogged areas</option>
+                    <option value="dark_humus">🟫 Dark/Black Humus — Very dark, rich in organic matter</option>
+                    <option value="volcanic">🌋 Volcanic Soil — Dark grey/black, very fertile, near volcanoes</option>
+                    <option value="laterite">🧱 Laterite/Murram — Red-orange, hard when dry</option>
+                    <option value="alluvial">💧 Alluvial Soil — River/flood plain, silty, very fertile</option>
+                    <option value="peat">🌿 Peat/Organic Soil — Very dark, swampy, spongy</option>
+                </select>
+            </div>
+        </div>
+        <button class="soil-btn" onclick="analyzeSoil()">🔬 Analyze My Soil & Get Crop Recommendations</button>
+
+        <div class="soil-result" id="soilResult">
+            <div class="soil-result-header">
+                <div class="soil-icon" id="soilIconDisplay">🌱</div>
+                <div>
+                    <h2 id="soilTypeName">Soil Type</h2>
+                    <p id="soilScientificName">Scientific name</p>
+                </div>
+            </div>
+            <div class="soil-result-body">
+                <div class="soil-info-grid">
+                    <div class="soil-info-box">
+                        <div class="s-label">🧪 pH Level</div>
+                        <div class="s-value" id="soilPH">-</div>
+                    </div>
+                    <div class="soil-info-box">
+                        <div class="s-label">💧 Drainage</div>
+                        <div class="s-value" id="soilDrainage">-</div>
+                    </div>
+                    <div class="soil-info-box">
+                        <div class="s-label">🌿 Fertility</div>
+                        <div class="s-value" id="soilFertility">-</div>
+                    </div>
+                </div>
+                <div class="soil-crops-title">🏆 Top 3 Best Crops for Your Soil</div>
+                <div class="soil-crop-cards" id="soilCropCards"></div>
+                <div class="soil-tips">
+                    <h4>🔑 How to Improve Your Soil</h4>
+                    <ul id="soilImproveTips"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- YIELD TIPS -->
+<div class="page" id="page-yield">
+    <div class="page-hero">
+        <div class="hero-badge">✦ YIELD IMPROVEMENT</div>
+        <h2>Grow More <span>From Every Crop</span></h2>
+        <p>Select your crop — get expert tips proven to increase your harvest by 30-60%</p>
+    </div>
+    <div class="yield-main">
+        <div class="yield-crop-grid" id="yieldCropGrid"></div>
+        <div class="yield-detail" id="yieldDetail">
+            <button class="back-btn" onclick="showYieldGrid()">← Back to All Crops</button>
+            <div class="yield-header">
+                <div class="yield-emoji-big" id="yieldEmoji">🌱</div>
+                <div>
+                    <h2 id="yieldCropName">Crop Name</h2>
+                    <p id="yieldSubtitle">Yield Improvement Guide</p>
+                </div>
+            </div>
+            <div class="yield-body">
+                <div class="yield-stats">
+                    <div class="yield-stat-box">
+                        <div class="ys-label">🎯 Avg Yield Increase</div>
+                        <div class="ys-value" id="yieldIncrease">-</div>
+                    </div>
+                    <div class="yield-stat-box">
+                        <div class="ys-label">⏱️ Time to See Results</div>
+                        <div class="ys-value" id="yieldTime">-</div>
+                    </div>
+                    <div class="yield-stat-box">
+                        <div class="ys-label">💰 ROI Potential</div>
+                        <div class="ys-value" id="yieldROI">-</div>
+                    </div>
+                </div>
+                <div class="yield-section">
+                    <div class="yield-section-title">🌱 Top Yield Improvement Tips</div>
+                    <div id="yieldTips"></div>
+                </div>
+                <div class="yield-section">
+                    <div class="yield-section-title">⚠️ Common Mistakes That Reduce Yield</div>
+                    <div id="yieldMistakes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="kente"></div>
 <footer>
     <p>Powered by <strong>AgriXenova AI</strong></p>
@@ -386,12 +716,12 @@ function showPage(page, btn) {
     if (page === 'journal') loadPlants();
     if (page === 'calendar') renderCropGrid();
     if (page === 'fertilizer') renderFertGrid();
+    if (page === 'yield') renderYieldGrid();
 }
 
-// ── ALL CROPS DATA
+// ── CROP DATA
 const CROPS = {
-    // ✅ IN PLANTVILLAGE SCANNER
-    "Tomato":     { emoji:"🍅", inScanner:true, planting:["March","April","September","October"], harvest:["June","July","December","January"], days:"60-80 days", water:"2-3 times per week", sun:"6-8 hours daily", soil:"Well-drained, slightly acidic (pH 6.0-6.8)", fertilizer:"NPK 10-10-10 at planting, high potassium when fruiting", tips:"Stake plants when 30cm tall. Remove suckers for bigger fruits. Watch for blight in wet seasons." },
+    "Tomato":     { emoji:"🍅", inScanner:true, planting:["March","April","September","October"], harvest:["June","July","December","January"], days:"60-80 days", water:"2-3 times per week", sun:"6-8 hours daily", soil:"Well-drained, slightly acidic (pH 6.0-6.8)", fertilizer:"NPK 10-10-10 at planting, high potassium when fruiting", tips:"Stake plants when 30cm tall. Remove suckers for bigger fruits." },
     "Potato":     { emoji:"🥔", inScanner:true, planting:["February","March","August","September"], harvest:["May","June","November","December"], days:"70-120 days", water:"1-2 times per week", sun:"6 hours daily", soil:"Loose, well-drained (pH 5.0-6.0)", fertilizer:"High phosphorus at planting, reduce nitrogen after flowering", tips:"Hill soil around stems as plant grows. Harvest when leaves turn yellow." },
     "Maize":      { emoji:"🌽", inScanner:true, planting:["March","April","October","November"], harvest:["July","August","January","February"], days:"90-120 days", water:"2 times per week", sun:"8 hours daily", soil:"Rich, well-drained (pH 5.8-7.0)", fertilizer:"High nitrogen — apply urea at knee height stage", tips:"Plant in blocks not rows for better pollination. Watch for fall armyworm." },
     "Apple":      { emoji:"🍎", inScanner:true, planting:["November","December","January"], harvest:["August","September","October"], days:"150-180 days", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Balanced NPK in spring, potassium before fruiting", tips:"Thin fruits to one per cluster for larger apples. Prune in winter." },
@@ -399,47 +729,37 @@ const CROPS = {
     "Strawberry": { emoji:"🍓", inScanner:true, planting:["August","September","October"], harvest:["November","December","January"], days:"60-90 days", water:"3 times per week", sun:"6-8 hours daily", soil:"Sandy loam, slightly acidic (pH 5.5-6.5)", fertilizer:"High phosphorus at planting, balanced NPK during fruiting", tips:"Mulch around plants to keep berries clean and retain moisture." },
     "Peach":      { emoji:"🍑", inScanner:true, planting:["November","December","January"], harvest:["June","July","August"], days:"120-150 days", water:"2 times per week", sun:"8 hours daily", soil:"Sandy loam, well-drained (pH 6.0-6.5)", fertilizer:"Balanced NPK in spring before bud break", tips:"Thin fruits to 15-20cm apart for larger peaches. Net against birds." },
     "Pepper":     { emoji:"🫑", inScanner:true, planting:["March","April","September"], harvest:["June","July","December"], days:"70-90 days", water:"2-3 times per week", sun:"6-8 hours daily", soil:"Rich, well-drained (pH 6.0-6.8)", fertilizer:"High nitrogen early, switch to high potassium when flowering", tips:"Pinch first flowers to encourage bushier plant and more fruits." },
-    "Cherry":     { emoji:"🍒", inScanner:true, planting:["November","December","January"], harvest:["May","June","July"], days:"70-90 days from bloom", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Balanced NPK in early spring, low nitrogen after fruit set", tips:"Net trees before harvest to protect from birds. Avoid overhead irrigation." },
+    "Cherry":     { emoji:"🍒", inScanner:true, planting:["November","December","January"], harvest:["May","June","July"], days:"70-90 days from bloom", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Balanced NPK in early spring, low nitrogen after fruit set", tips:"Net trees before harvest to protect from birds." },
     "Blueberry":  { emoji:"🫐", inScanner:true, planting:["October","November","February"], harvest:["June","July","August"], days:"60-90 days from bloom", water:"2 times per week", sun:"6-8 hours daily", soil:"Acidic, well-drained (pH 4.5-5.5)", fertilizer:"Ammonium sulfate — avoid lime. No phosphorus needed", tips:"Plant 2+ varieties for cross-pollination. Mulch heavily with pine bark." },
-    "Orange":     { emoji:"🍊", inScanner:true, planting:["September","October","November"], harvest:["December","January","February","March"], days:"8-12 months from bloom", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained sandy loam (pH 6.0-7.5)", fertilizer:"Citrus-specific NPK with micronutrients — apply 3x per year", tips:"Do not overwater — causes root rot. Harvest when skin turns orange." },
-    "Soybean":    { emoji:"🥜", inScanner:true, planting:["April","May","June"], harvest:["September","October","November"], days:"75-120 days", water:"Once per week", sun:"6-8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Low nitrogen — soybeans fix their own nitrogen. High phosphorus and potassium", tips:"Inoculate seeds with rhizobium bacteria for best nitrogen fixation." },
-    "Squash":     { emoji:"🎃", inScanner:true, planting:["March","April","August","September"], harvest:["June","July","November","December"], days:"50-65 days", water:"2 times per week", sun:"6-8 hours daily", soil:"Rich, well-drained (pH 6.0-6.5)", fertilizer:"High nitrogen early, switch to phosphorus and potassium when flowering", tips:"Hand-pollinate flowers in early morning for better fruit set." },
-    "Raspberry":  { emoji:"🍓", inScanner:true, planting:["November","December","February"], harvest:["June","July","August"], days:"60-70 days from bloom", water:"2 times per week", sun:"6-8 hours daily", soil:"Well-drained, slightly acidic (pH 5.5-6.5)", fertilizer:"Balanced NPK in spring, avoid high nitrogen in summer", tips:"Prune old canes after harvest. Stake canes to prevent wind damage." },
-
-    // ❌ NOT IN SCANNER — Calendar + Fertilizer only
+    "Orange":     { emoji:"🍊", inScanner:true, planting:["September","October","November"], harvest:["December","January","February","March"], days:"8-12 months from bloom", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained sandy loam (pH 6.0-7.5)", fertilizer:"Citrus-specific NPK with micronutrients — apply 3x per year", tips:"Do not overwater — causes root rot. Harvest when skin turns fully orange." },
     "Watermelon": { emoji:"🍉", inScanner:false, planting:["February","March","August"], harvest:["May","June","November"], days:"80-90 days", water:"2 times per week", sun:"8 hours daily", soil:"Sandy loam, well-drained (pH 6.0-6.8)", fertilizer:"High nitrogen early, high potassium when vines run", tips:"Thump fruit — hollow sound means ripe. Underside turns yellow when ready." },
     "Mango":      { emoji:"🥭", inScanner:false, planting:["October","November"], harvest:["November","December","January","February"], days:"100-150 days after flowering", water:"Once per week", sun:"8 hours daily", soil:"Deep, well-drained (pH 5.5-7.5)", fertilizer:"High potassium and phosphorus before flowering season", tips:"Do not water during flowering — it causes flower drop." },
     "Banana":     { emoji:"🍌", inScanner:false, planting:["Any month"], harvest:["9-12 months after planting"], days:"270-365 days", water:"3 times per week", sun:"8 hours daily", soil:"Rich, well-drained loam (pH 5.5-7.0)", fertilizer:"High potassium — apply every 2 months", tips:"Remove extra suckers, keep only 1-2 per plant for best yield." },
     "Rice":       { emoji:"🌾", inScanner:false, planting:["March","April","September","October"], harvest:["July","August","January","February"], days:"105-150 days", water:"Keep flooded 5cm until 2 weeks before harvest", sun:"8 hours daily", soil:"Clay or clay loam that retains water (pH 5.5-6.5)", fertilizer:"High nitrogen in 3 splits — basal, tillering, panicle initiation", tips:"Drain field 2 weeks before harvest for easier harvesting." },
     "Wheat":      { emoji:"🌾", inScanner:false, planting:["October","November","December"], harvest:["March","April","May"], days:"110-130 days", water:"3-4 irrigations total", sun:"7 hours daily", soil:"Well-drained loam or clay loam (pH 6.0-7.5)", fertilizer:"High nitrogen in 2 splits — at planting and at tillering", tips:"Apply fungicide at flag leaf stage to prevent rust diseases." },
-    "Coffee":     { emoji:"☕", inScanner:false, planting:["March","April","September"], harvest:["October","November","December"], days:"3-4 years first harvest", water:"2 times per week", sun:"4-6 hours — prefers partial shade", soil:"Well-drained, slightly acidic (pH 6.0-6.5)", fertilizer:"NPK with sulfur — apply 3x per year after rains", tips:"Pick only bright red cherries. Dry process or wet process immediately after harvest." },
+    "Coffee":     { emoji:"☕", inScanner:false, planting:["March","April","September"], harvest:["October","November","December"], days:"3-4 years first harvest", water:"2 times per week", sun:"4-6 hours — prefers partial shade", soil:"Well-drained, slightly acidic (pH 6.0-6.5)", fertilizer:"NPK with sulfur — apply 3x per year after rains", tips:"Pick only bright red cherries. Process immediately after harvest." },
     "Tea":        { emoji:"🍵", inScanner:false, planting:["April","May","September","October"], harvest:["Year-round after 3 years"], days:"3 years first harvest", water:"Needs high rainfall — 1500mm per year", sun:"5-6 hours daily, partial shade", soil:"Well-drained, strongly acidic (pH 4.5-5.5)", fertilizer:"High nitrogen — apply every 3 months. Avoid phosphorus excess", tips:"Pluck only the top 2 leaves and bud for highest quality tea." }
 };
 
-// ── Render grids
 function renderCropGrid() {
-    const grid = document.getElementById('cropGrid');
-    grid.innerHTML = Object.entries(CROPS).map(([name, d]) => `
+    document.getElementById('cropGrid').innerHTML = Object.entries(CROPS).map(([name, d]) => `
         <div class="crop-card" onclick="showCropDetail('${name}')">
             <div class="c-emoji">${d.emoji}</div>
             <h4>${name}</h4>
             <p>${d.days}</p>
             ${d.inScanner ? '<span style="font-size:10px;color:#90CAF9;">✅ In Scanner</span>' : '<span style="font-size:10px;color:var(--gray);">📅 Calendar only</span>'}
-        </div>
-    `).join('');
+        </div>`).join('');
     document.getElementById('cropGrid').style.display = 'grid';
     document.getElementById('cropDetail').style.display = 'none';
 }
 
 function renderFertGrid() {
-    const grid = document.getElementById('fertGrid');
-    grid.innerHTML = Object.entries(CROPS).map(([name, d]) => `
+    document.getElementById('fertGrid').innerHTML = Object.entries(CROPS).map(([name, d]) => `
         <div class="crop-card" onclick="showFertDetail('${name}')">
             <div class="c-emoji">${d.emoji}</div>
             <h4>${name}</h4>
             <p>${d.days}</p>
-        </div>
-    `).join('');
+        </div>`).join('');
     document.getElementById('fertGrid').style.display = 'grid';
     document.getElementById('fertDetail').style.display = 'none';
 }
@@ -458,8 +778,8 @@ function showCropDetail(name) {
     document.getElementById('detailSoil').textContent = c.soil;
     document.getElementById('detailTips').textContent = c.tips;
     document.getElementById('scannerNote').innerHTML = c.inScanner
-        ? '<span class="in-scanner">✅ This crop is supported in the AI Disease Scanner</span>'
-        : '<span class="in-scanner" style="color:#FFCC80;border-color:rgba(255,204,128,0.3);background:rgba(255,204,128,0.1);">📅 Calendar only — not yet in AI Scanner</span>';
+        ? '<span class="in-scanner" style="background:rgba(21,101,192,0.15);border:1px solid rgba(21,101,192,0.3);color:#90CAF9;">✅ This crop is supported in the AI Disease Scanner</span>'
+        : '<span class="in-scanner" style="background:rgba(255,204,128,0.1);border:1px solid rgba(255,204,128,0.3);color:#FFCC80;">📅 Calendar only — coming to AI Scanner in v2</span>';
 }
 
 function showFertDetail(name) {
@@ -478,19 +798,499 @@ function showFertDetail(name) {
 function showCropGrid() { document.getElementById('cropGrid').style.display='grid'; document.getElementById('cropDetail').style.display='none'; }
 function showFertGrid() { document.getElementById('fertGrid').style.display='grid'; document.getElementById('fertDetail').style.display='none'; }
 
+// ── DEMAND
+async function showDemand() {
+    const country = document.getElementById('regionSelect').value;
+    const grid = document.getElementById('demandGrid');
+    const loading = document.getElementById('demandLoading');
+    if (!country) return;
+    grid.innerHTML = '';
+    loading.style.display = 'block';
+    try {
+        const res = await fetch(`/api/demand/${country}`);
+        const data = await res.json();
+        loading.style.display = 'none';
+        if (!data.crops || !data.crops.length) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--gray);">No data available for this country yet.</div>';
+            return;
+        }
+        grid.innerHTML = data.crops.map(c => `
+            <div class="demand-card">
+                <div class="demand-card-top">
+                    <div class="demand-emoji">${c.emoji}</div>
+                    <div class="demand-info">
+                        <h3>${c.name}</h3>
+                        <p>${data.season} Season · ${data.month}</p>
+                    </div>
+                </div>
+                <span class="trend-badge ${c.trend==='hot'?'trend-hot':c.trend==='up'?'trend-up':'trend-stable'}">
+                    ${c.trend==='hot'?'🔥 High Demand':c.trend==='up'?'📈 Rising':'📊 Stable'}
+                </span>
+                <p class="demand-reason">${c.reason}</p>
+                <div class="price-row">
+                    <div><div class="price-label">Local Price</div><div class="price-value">${c.price_local}</div></div>
+                    <div style="text-align:right;"><div class="price-label">World Price</div><div style="font-size:13px;color:var(--gray);">${c.price_usd}</div></div>
+                </div>
+            </div>`).join('');
+        document.getElementById('demandUpdated').innerHTML = `
+            <div style="margin-top:20px;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:13px;text-align:center;">
+                📊 <strong style="color:var(--gold);">${data.data_source}</strong> &nbsp;·&nbsp;
+                🗓️ <strong style="color:var(--gold);">${data.month}</strong> &nbsp;·&nbsp;
+                🌍 <strong style="color:var(--gold);">${data.season} Season</strong> &nbsp;·&nbsp;
+                ${data.wb_loaded?'✅ Live World Bank prices':'📋 Seasonal estimates'}
+            </div>`;
+    } catch(e) {
+        loading.style.display = 'none';
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--gray);">Error loading data. Please try again.</div>';
+    }
+}
+
+// ── SOIL ADVISOR DATA
+const SOIL_DATA = {
+    red_clay: {
+        name: "Red Clay Soil", scientific: "Ferralsols / Nitisols", icon: "🔴",
+        ph: "5.0 – 6.5 (Slightly Acidic)", drainage: "Moderate — Slow", fertility: "Medium (Iron & Aluminum Rich)",
+        crops: {
+            east_africa_highlands: [
+                { emoji:"☕", name:"Coffee", rank:1, yield:"High", note:"Red clay in East African highlands is world's best coffee soil. Kenya, Ethiopia and Rwanda produce world-class Arabica here." },
+                { emoji:"🍵", name:"Tea", rank:2, yield:"Very High", note:"Tea thrives in red acidic clay with good drainage. Kenyan highlands produce world-famous tea on this exact soil." },
+                { emoji:"🥔", name:"Potato", rank:3, yield:"High", note:"Red clay highland soils produce high-quality potatoes. Loose the soil well before planting for best tuber development." }
+            ],
+            east_africa_lowlands: [
+                { emoji:"🌽", name:"Maize", rank:1, yield:"High", note:"Maize grows well in red clay lowlands with adequate rainfall. Ensure good drainage to prevent waterlogging." },
+                { emoji:"🍅", name:"Tomato", rank:2, yield:"High", note:"Red clay with good drainage produces excellent tomatoes. Add organic matter to improve water retention." },
+                { emoji:"🥜", name:"Groundnut", rank:3, yield:"Medium", note:"Groundnuts tolerate slightly acidic red clay soils. Sandy-red clay mix is ideal." }
+            ],
+            west_africa_savanna: [
+                { emoji:"🌽", name:"Maize", rank:1, yield:"High", note:"Red savanna soils with good rainfall produce excellent maize. Apply lime to raise pH above 6.0 for best results." },
+                { emoji:"🥜", name:"Groundnut", rank:2, yield:"High", note:"Groundnuts are the perfect crop for West African red soils. The slightly acidic pH is ideal." },
+                { emoji:"🍠", name:"Cassava", rank:3, yield:"Very High", note:"Cassava thrives even in poor red soils. Very drought tolerant. Excellent choice for marginal red clay." }
+            ],
+            south_asia_deccan: [
+                { emoji:"🌶️", name:"Chili Pepper", rank:1, yield:"Very High", note:"Deccan red soils are famous for Guntur chili. Excellent drainage and warmth make this the world's best chili soil." },
+                { emoji:"🥜", name:"Groundnut", rank:2, yield:"High", note:"Red Deccan soils are perfect for groundnut cultivation. India's major groundnut belt is on this soil type." },
+                { emoji:"🌽", name:"Maize", rank:3, yield:"High", note:"Kharif maize grows well in red Deccan soils with good monsoon rainfall." }
+            ],
+            default: [
+                { emoji:"☕", name:"Coffee", rank:1, yield:"High", note:"Red clay soils worldwide are excellent for coffee cultivation. Slightly acidic pH and good drainage are ideal." },
+                { emoji:"🍵", name:"Tea", rank:2, yield:"High", note:"Tea thrives in acidic red clay soils. Excellent drainage and slightly acidic pH provide perfect conditions." },
+                { emoji:"🌽", name:"Maize", rank:3, yield:"Medium", note:"Maize grows well in red clay soils with adequate rainfall. Add lime to raise pH slightly for better yields." }
+            ]
+        },
+        tips: ["Add lime (calcium carbonate) to raise pH closer to 6.5 for most crops", "Mix in organic compost to improve water and nutrient retention", "Deep till before planting to break up clay hardpan layers", "Use phosphorus fertilizer — red soils bind phosphorus and make it unavailable to plants", "Plant cover crops like mucuna or lablab between seasons to add organic matter"]
+    },
+    black_cotton: {
+        name: "Black Cotton Soil", scientific: "Vertisols", icon: "⚫",
+        ph: "6.5 – 8.0 (Neutral to Alkaline)", drainage: "Very Poor — Waterlogged in rain", fertility: "High (Rich in Calcium & Magnesium)",
+        crops: {
+            east_africa_highlands: [
+                { emoji:"🌾", name:"Wheat", rank:1, yield:"Very High", note:"Black cotton soil is world-famous for wheat production. Ethiopia and Kenya highlands produce excellent wheat on Vertisols." },
+                { emoji:"🌻", name:"Sunflower", rank:2, yield:"High", note:"Sunflower is perfectly suited to black cotton soil — tolerates waterlogging and alkaline pH." },
+                { emoji:"🌽", name:"Sorghum", rank:3, yield:"High", note:"Sorghum is naturally adapted to black cotton soils. Drought tolerant and handles waterlogging better than maize." }
+            ],
+            south_asia_plains: [
+                { emoji:"🌾", name:"Wheat", rank:1, yield:"Very High", note:"Indo-Gangetic black soils (Regur) are India's wheat belt. Punjab and Haryana black cotton soils produce world-class wheat." },
+                { emoji:"🥜", name:"Soybean", rank:2, yield:"High", note:"Black cotton Vertisols of Maharashtra and MP are India's soybean heartland. High calcium content benefits legumes." },
+                { emoji:"🌶️", name:"Cotton", rank:3, yield:"Very High", note:"Black cotton soil is literally named after cotton — it is the original cotton crop soil of India." }
+            ],
+            default: [
+                { emoji:"🌾", name:"Wheat", rank:1, yield:"Very High", note:"Black cotton soil is globally famous for wheat production. Deep, nutrient-rich profile produces excellent wheat yields." },
+                { emoji:"🌻", name:"Sunflower", rank:2, yield:"High", note:"Sunflower tolerates the alkaline pH and waterlogging of black cotton soils perfectly." },
+                { emoji:"🥜", name:"Soybean", rank:3, yield:"High", note:"Soybeans thrive in calcium-rich black cotton soils. The high pH suits legume nitrogen fixation." }
+            ]
+        },
+        tips: ["Avoid overworking when wet — black cotton soil becomes extremely sticky and destroys soil structure", "Build raised beds to improve drainage before the rains begin", "Add gypsum (calcium sulfate) to improve soil structure and drainage", "Plant as soon as rains end — soil dries and cracks quickly, making it hard to work", "Use deep-rooted crops to break up the hard layer that forms at depth"]
+    },
+    brown_loam: {
+        name: "Brown Loam Soil", scientific: "Cambisols / Kastanozems", icon: "🟤",
+        ph: "6.0 – 7.0 (Ideal Neutral)", drainage: "Good — Well Balanced", fertility: "High — Most Versatile Soil",
+        crops: {
+            east_africa_highlands: [
+                { emoji:"🥔", name:"Potato", rank:1, yield:"Very High", note:"Brown loam is the ideal potato soil worldwide. Kenya's Nyandarua and Meru counties produce exceptional potatoes on brown loam." },
+                { emoji:"🍅", name:"Tomato", rank:2, yield:"Very High", note:"Tomatoes love brown loam. The balanced drainage and neutral pH produce the highest quality tomatoes." },
+                { emoji:"🌽", name:"Maize", rank:3, yield:"Very High", note:"Brown loam is the most productive maize soil. Excellent drainage, neutral pH and good water retention." }
+            ],
+            north_america_midwest: [
+                { emoji:"🌽", name:"Maize", rank:1, yield:"Very High", note:"US Corn Belt's brown loam prairie soil produces world's highest maize yields. The richest natural farmland on Earth." },
+                { emoji:"🥜", name:"Soybean", rank:2, yield:"Very High", note:"Midwest brown loam soils produce the world's best soybean yields. US is world #1 exporter thanks to this soil." },
+                { emoji:"🌾", name:"Wheat", rank:3, yield:"High", note:"Winter wheat on brown loam of US Great Plains produces consistent high yields with minimal inputs." }
+            ],
+            western_europe: [
+                { emoji:"🌾", name:"Wheat", rank:1, yield:"Very High", note:"European brown loam soils produce Europe's highest wheat yields. France and Germany's best farmland is brown loam." },
+                { emoji:"🥔", name:"Potato", rank:2, yield:"Very High", note:"Netherlands and UK brown loam potato production is world class. Excellent drainage prevents tuber rot." },
+                { emoji:"🥦", name:"Vegetables", rank:3, yield:"Very High", note:"Brown loam is perfect for all vegetables. The balanced pH and drainage support any vegetable crop." }
+            ],
+            default: [
+                { emoji:"🍅", name:"Tomato", rank:1, yield:"Very High", note:"Brown loam is the world's best tomato soil — balanced pH, good drainage and nutrient retention." },
+                { emoji:"🥔", name:"Potato", rank:2, yield:"Very High", note:"Potatoes thrive in brown loam. The loose, well-drained structure allows perfect tuber development." },
+                { emoji:"🌽", name:"Maize", rank:3, yield:"Very High", note:"Brown loam produces the world's highest maize yields. The balanced soil chemistry maximizes growth." }
+            ]
+        },
+        tips: ["Brown loam is your best asset — protect it by avoiding erosion with cover crops", "Rotate crops every season to maintain the natural nutrient balance", "Add compost annually to maintain the organic matter that makes brown loam so productive", "Test soil pH every 2 years — brown loam can gradually acidify over time", "Minimum tillage is best — brown loam's natural structure is its greatest strength"]
+    },
+    sandy: {
+        name: "Sandy Soil", scientific: "Arenosols / Psammosols", icon: "🟡",
+        ph: "5.5 – 7.0 (Variable)", drainage: "Excellent — Drains Very Fast", fertility: "Low — Nutrients Wash Out",
+        crops: {
+            east_africa_lowlands: [
+                { emoji:"🥜", name:"Groundnut", rank:1, yield:"High", note:"Sandy soils are perfect for groundnuts — excellent drainage prevents pod rot. Coastal Kenya and Tanzania produce quality groundnuts on sandy soils." },
+                { emoji:"🍠", name:"Cassava", rank:2, yield:"Very High", note:"Cassava is the king of sandy soils. Thrives even in poor, sandy conditions with minimal inputs." },
+                { emoji:"🍉", name:"Watermelon", rank:3, yield:"Very High", note:"Watermelon grows exceptionally well in sandy soils. The good drainage and warm soil temperature produce sweet, large fruits." }
+            ],
+            north_africa: [
+                { emoji:"🍠", name:"Sweet Potato", rank:1, yield:"High", note:"Sandy Nile Delta soils produce excellent sweet potatoes. Good drainage and warm temperatures are ideal." },
+                { emoji:"🧅", name:"Onion", rank:2, yield:"Very High", note:"Egypt's sandy soils produce world-class onions. The loose structure allows perfect bulb development." },
+                { emoji:"🥔", name:"Potato", rank:3, yield:"High", note:"Sandy soils produce clean, smooth potatoes with excellent marketability. Easy harvest with minimal damage." }
+            ],
+            default: [
+                { emoji:"🥜", name:"Groundnut", rank:1, yield:"High", note:"Sandy soil is ideal for groundnuts worldwide — excellent drainage and loose structure allow pods to develop perfectly." },
+                { emoji:"🍉", name:"Watermelon", rank:2, yield:"Very High", note:"Watermelon loves sandy soil. Fast drainage prevents disease and warm soil temperatures produce sweet fruits." },
+                { emoji:"🍠", name:"Cassava", rank:3, yield:"Very High", note:"Cassava is the most tolerant crop for poor sandy soils. Produces high yields even with minimal rainfall." }
+            ]
+        },
+        tips: ["Add organic matter (compost, manure) every season — sandy soil has no natural nutrient holding capacity", "Use drip irrigation — sandy soil drains so fast that overhead watering wastes water", "Mulch heavily around plants to slow water evaporation and add organic matter over time", "Apply fertilizer in small, frequent amounts rather than one large dose — nutrients wash out fast", "Plant windbreaks around sandy fields — wind causes severe erosion in sandy soils"]
+    },
+    volcanic: {
+        name: "Volcanic Soil", scientific: "Andosols", icon: "🌋",
+        ph: "5.5 – 7.0 (Slightly Acidic to Neutral)", drainage: "Excellent — Very Porous", fertility: "Extremely High — Nature's Best Soil",
+        crops: {
+            east_africa_highlands: [
+                { emoji:"☕", name:"Coffee", rank:1, yield:"Exceptional", note:"Volcanic soil around Mount Kenya, Kilimanjaro and Ethiopian rift produces the world's most prized coffee. This is why Ethiopian coffee is globally famous." },
+                { emoji:"🍵", name:"Tea", rank:2, yield:"Exceptional", note:"Volcanic highlands produce the finest tea in the world. Kenya's Rift Valley volcanic soils produce premium grade tea." },
+                { emoji:"🥔", name:"Potato", rank:3, yield:"Very High", note:"Volcanic soils around East African highlands produce exceptional potatoes. High mineral content produces nutritious, high-yield crops." }
+            ],
+            southeast_asia_tropical: [
+                { emoji:"🌶️", name:"Chili/Spices", rank:1, yield:"Very High", note:"Indonesian volcanic islands (Java, Sumatra, Sulawesi) produce world's finest spices on volcanic soil. The mineral richness is unmatched." },
+                { emoji:"🍌", name:"Banana", rank:2, yield:"Very High", note:"Bananas thrive in volcanic soil. Philippines and Indonesia volcanic regions produce world's finest bananas." },
+                { emoji:"☕", name:"Coffee", rank:3, yield:"Exceptional", note:"Indonesian Kopi Luwak and specialty coffees grow on volcanic soil. Sumatra and Java volcanic coffee is world famous." }
+            ],
+            latin_america_tropical: [
+                { emoji:"☕", name:"Coffee", rank:1, yield:"Exceptional", note:"Colombian, Costa Rican and Guatemalan volcanic soils produce world's finest Arabica coffee. The rich minerals create unique flavour profiles." },
+                { emoji:"🫐", name:"Blueberry", rank:2, yield:"Very High", note:"Peru and Colombia high-altitude volcanic soils produce premium blueberries with exceptional antioxidant content." },
+                { emoji:"🥑", name:"Avocado", rank:3, yield:"Very High", note:"Mexican volcanic soils produce Michoacan Hass avocados — world's most exported avocado on this exact soil type." }
+            ],
+            default: [
+                { emoji:"☕", name:"Coffee", rank:1, yield:"Exceptional", note:"Volcanic soil is the world's best coffee soil. The unique mineral profile creates the complex flavours that specialty coffee buyers pay premium for." },
+                { emoji:"🍵", name:"Tea", rank:2, yield:"Very High", note:"Tea grown on volcanic soil has exceptional quality and aroma. The porous structure provides perfect drainage." },
+                { emoji:"🥑", name:"Avocado", rank:3, yield:"Very High", note:"Avocados love well-drained volcanic soils. The deep, porous profile allows roots to access minerals deep in the soil." }
+            ]
+        },
+        tips: ["You are lucky — volcanic soil is the world's most fertile soil. Protect it at all costs", "Avoid excessive chemical fertilizer — volcanic soil has natural mineral balance that chemicals can disrupt", "Rotate crops to maintain diversity of soil organisms that make volcanic soil so productive", "Avoid compaction — volcanic soil's porous structure is its greatest strength", "Volcanic soils can be slightly acidic — test pH and add lime if needed for specific crops"]
+    },
+    dark_humus: {
+        name: "Dark Humus / Rich Organic Soil", scientific: "Phaeozems / Chernozems", icon: "🟫",
+        ph: "6.0 – 7.5 (Ideal)", drainage: "Good", fertility: "Extremely High — World's Most Productive",
+        crops: {
+            eastern_europe: [
+                { emoji:"🌾", name:"Wheat", rank:1, yield:"Exceptional", note:"Ukraine and Russia's Chernozem (black earth) produces world's highest wheat yields. This is why Ukraine is called the breadbasket of Europe." },
+                { emoji:"🌽", name:"Maize", rank:2, yield:"Very High", note:"Chernozem dark soils of Ukraine and Romania produce world-class maize. The deep organic layer provides nutrition for the entire season." },
+                { emoji:"🌻", name:"Sunflower", rank:3, yield:"Very High", note:"Ukraine is world's top sunflower producer — entirely grown on dark humus Chernozem soils." }
+            ],
+            north_america_midwest: [
+                { emoji:"🌽", name:"Maize", rank:1, yield:"Exceptional", note:"US Midwest prairie dark soils produce world's highest maize yields. Iowa and Illinois dark humus is 6 feet deep in places." },
+                { emoji:"🥜", name:"Soybean", rank:2, yield:"Very High", note:"Dark humus soils produce exceptional soybeans. The deep organic layer supports nitrogen fixation naturally." },
+                { emoji:"🌾", name:"Wheat", rank:3, yield:"Very High", note:"Kansas and Nebraska dark prairie soils produce consistent high wheat yields with deep root penetration." }
+            ],
+            default: [
+                { emoji:"🌾", name:"Wheat", rank:1, yield:"Exceptional", note:"Dark humus soils produce the world's highest wheat yields. The deep organic matter feeds the plant all season long." },
+                { emoji:"🌽", name:"Maize", rank:2, yield:"Exceptional", note:"Maize reaches maximum potential in dark humus soils. Deep organic layer and neutral pH are ideal." },
+                { emoji:"🍅", name:"Tomato", rank:3, yield:"Very High", note:"Tomatoes produce their highest yields in dark, rich organic soils. The nutrient richness supports heavy fruiting." }
+            ]
+        },
+        tips: ["This is one of the world's most precious agricultural resources — never leave it bare, always use cover crops", "Minimize tillage to preserve the organic structure that makes this soil so valuable", "Never burn crop residue — incorporate it back into the soil to maintain the organic matter", "Rotate deep-rooted and shallow-rooted crops to use different soil layers", "Protect from erosion at all costs — it takes 1,000 years to form 1 inch of humus layer"]
+    },
+    alluvial: {
+        name: "Alluvial Soil", scientific: "Fluvisols", icon: "💧",
+        ph: "6.5 – 7.5 (Neutral — Ideal)", drainage: "Good to Moderate", fertility: "Very High — Renewed Every Flood Season",
+        crops: {
+            south_asia_plains: [
+                { emoji:"🌾", name:"Rice", rank:1, yield:"Very High", note:"Indo-Gangetic alluvial plains produce 60% of India's rice. The Ganges and Brahmaputra rivers deposit fresh nutrients every monsoon season." },
+                { emoji:"🌾", name:"Wheat", rank:2, yield:"Very High", note:"Punjab and Haryana alluvial soils produce India's highest wheat yields. Fresh silt deposit every season means less fertilizer needed." },
+                { emoji:"🍬", name:"Sugarcane", rank:3, yield:"Very High", note:"Alluvial soils of UP and Bihar produce India's sugarcane belt. Deep, fertile alluvial soil supports sugarcane's high nutrient needs." }
+            ],
+            north_africa: [
+                { emoji:"🍅", name:"Tomato", rank:1, yield:"Very High", note:"Nile Valley alluvial soil is world-class for vegetables. Egypt exports millions of tonnes of tomatoes grown on this ancient river soil." },
+                { emoji:"🧅", name:"Onion", rank:2, yield:"Very High", note:"Egypt's Nile Delta alluvial soils produce world-class onions. Annual Nile flood historically renewed nutrients naturally." },
+                { emoji:"🥔", name:"Potato", rank:3, yield:"Very High", note:"Alluvial Nile soils produce high-quality potatoes for export to EU and Gulf markets." }
+            ],
+            southeast_asia_tropical: [
+                { emoji:"🌾", name:"Rice", rank:1, yield:"Very High", note:"Mekong and Irrawaddy river delta alluvial soils produce Asia's rice bowls — Vietnam, Thailand, Myanmar." },
+                { emoji:"🍌", name:"Banana", rank:2, yield:"Very High", note:"River delta alluvial soils produce exceptional bananas. The fresh silty deposits provide constant nutrition." },
+                { emoji:"🥭", name:"Mango", rank:3, yield:"High", note:"Philippine and Vietnamese mango grown on alluvial river soils produce premium export quality fruit." }
+            ],
+            default: [
+                { emoji:"🌾", name:"Rice", rank:1, yield:"Very High", note:"Alluvial soils worldwide are ideal for rice. River deposits provide natural fertility and the flat terrain suits flooding." },
+                { emoji:"🍅", name:"Tomato", rank:2, yield:"Very High", note:"Alluvial soils produce world-class tomatoes. The balanced mineral content from river deposits creates ideal growing conditions." },
+                { emoji:"🌽", name:"Maize", rank:3, yield:"Very High", note:"Maize thrives in alluvial soils. The natural fertility from river deposits reduces fertilizer requirements significantly." }
+            ]
+        },
+        tips: ["Alluvial soils near rivers are naturally replenished by floods — plan your planting calendar around flood cycles", "Build small bunds (earthen walls) to manage water flow and prevent waterlogging", "Alluvial soils compact easily — avoid heavy machinery that damages the natural structure", "Test for salinity if near coastal areas — salt intrusion can reduce fertility", "Deep alluvial soils support long tap roots — ideal for deep-rooted crops like sugarcane and banana"]
+    },
+    grey_clay: {
+        name: "Grey/White Clay Soil", scientific: "Gleysols / Planosols", icon: "⚪",
+        ph: "5.5 – 7.0 (Acidic to Neutral)", drainage: "Very Poor — Waterlogged", fertility: "Medium (Nutrients Present but Locked)",
+        crops: {
+            east_africa_lowlands: [
+                { emoji:"🌾", name:"Rice", rank:1, yield:"High", note:"Grey waterlogged clay soils are perfect for paddy rice. The poor drainage that limits other crops is actually ideal for rice flooding." },
+                { emoji:"🌽", name:"Sorghum", rank:2, yield:"Medium", note:"Sorghum tolerates waterlogged grey clay better than maize. Plant on raised beds to improve drainage." },
+                { emoji:"🧅", name:"Onion", rank:3, yield:"Medium", note:"Onions on grey clay soils produce well if raised beds are used to improve drainage during bulb formation." }
+            ],
+            default: [
+                { emoji:"🌾", name:"Rice", rank:1, yield:"High", note:"Grey waterlogged clay soils are best suited to rice paddy farming. The natural waterlogging is an advantage not a problem." },
+                { emoji:"🌽", name:"Sorghum", rank:2, yield:"Medium", note:"Sorghum has the best tolerance of all cereals for waterlogged grey clay soils." },
+                { emoji:"🥬", name:"Water Vegetables", rank:3, yield:"High", note:"Taro, water spinach and other moisture-loving vegetables thrive in grey clay soils." }
+            ]
+        },
+        tips: ["Install drainage channels or raised beds before planting any crop other than rice", "Add gypsum and organic matter to improve soil structure and aeration", "Lime application helps neutralise acidity and improve nutrient availability", "Consider switching to rice paddy farming if drainage is impossible to install", "Avoid tillage when wet — grey clay soil smears and compacts destroying all structure"]
+    },
+    laterite: {
+        name: "Laterite / Murram Soil", scientific: "Ferralsols / Plinthosols", icon: "🧱",
+        ph: "4.5 – 6.0 (Strongly Acidic)", drainage: "Good — Fast Draining", fertility: "Low — Highly Weathered",
+        crops: {
+            west_africa_forest: [
+                { emoji:"🥭", name:"Mango", rank:1, yield:"High", note:"Mango is perfectly adapted to laterite soils of West Africa. Deep taproot accesses subsoil nutrients. Ghana and Ivory Coast mango on laterite is world quality." },
+                { emoji:"🍍", name:"Pineapple", rank:2, yield:"Very High", note:"Pineapple is the ideal laterite crop. Tolerates acidic, poor-draining soils better than almost any other fruit." },
+                { emoji:"🍠", name:"Cassava", rank:3, yield:"High", note:"Cassava is the most important food crop on laterite soils across West Africa. Tolerates poor fertility better than any other staple." }
+            ],
+            default: [
+                { emoji:"🥭", name:"Mango", rank:1, yield:"High", note:"Mango trees thrive in laterite soils. Deep roots access subsoil moisture and nutrients. Low maintenance once established." },
+                { emoji:"🍍", name:"Pineapple", rank:2, yield:"Very High", note:"Pineapple is one of the best crops for laterite soils. Tolerates acidity and poor fertility better than any other fruit." },
+                { emoji:"🍠", name:"Cassava", rank:3, yield:"High", note:"Cassava produces reliable yields even on poor laterite soils. The most important food security crop for laterite regions." }
+            ]
+        },
+        tips: ["Heavy lime application is essential — laterite acidity locks up all plant nutrients", "Add large amounts of organic compost every season to build soil fertility", "Plant permanent trees (mango, cashew) as they thrive on laterite once established", "Avoid annual crops without heavy soil improvement — they will fail on raw laterite", "Biochar application can dramatically improve laterite soil fertility over 2-3 seasons"]
+    },
+    peat: {
+        name: "Peat / Organic Soil", scientific: "Histosols", icon: "🌿",
+        ph: "3.5 – 5.5 (Very Acidic)", drainage: "Very Poor — Waterlogged", fertility: "Very High Organic but Mineral Poor",
+        crops: {
+            western_europe: [
+                { emoji:"🫐", name:"Blueberry", rank:1, yield:"Very High", note:"Peat soil is the natural home of blueberries. The extreme acidity that limits all other crops is exactly what blueberries need." },
+                { emoji:"🌱", name:"Cranberry", rank:2, yield:"Very High", note:"Cranberries are perfectly adapted to peat bog conditions. The waterlogged, acidic environment is ideal." },
+                { emoji:"🍓", name:"Strawberry (Acidic)", rank:3, yield:"High", note:"Strawberries tolerate peat soils with some lime amendment. The high organic matter produces excellent fruit quality." }
+            ],
+            southeast_asia_tropical: [
+                { emoji:"🥥", name:"Coconut", rank:1, yield:"High", note:"Coastal peat soils of Sumatra and Borneo produce coconuts. Tolerates waterlogged conditions and acidic pH." },
+                { emoji:"🍌", name:"Banana", rank:2, yield:"Medium", note:"Bananas grow on drained peat soils with lime amendment. The high organic matter compensates for low minerals." },
+                { emoji:"🫚", name:"Palm Oil", rank:3, yield:"High", note:"Oil palm is extensively grown on drained Indonesian and Malaysian peat soils. Controversial due to environmental impact." }
+            ],
+            default: [
+                { emoji:"🫐", name:"Blueberry", rank:1, yield:"Very High", note:"Peat is the natural soil for blueberries. The high acidity and waterlogging that limits other crops is perfect for blueberries." },
+                { emoji:"🌱", name:"Cranberry", rank:2, yield:"Very High", note:"Cranberries are perfectly adapted to peat. The extreme acidic, waterlogged conditions produce world-class cranberries." },
+                { emoji:"🏡", name:"Raised Bed Vegetables", rank:3, yield:"High", note:"Build raised beds with imported topsoil on top of peat for general vegetable production. Avoid direct planting in raw peat." }
+            ]
+        },
+        tips: ["Apply agricultural lime to raise pH before growing most crops — peat is too acidic for most plants", "Install drainage channels to lower water table before planting", "Peat is rich in organic matter but poor in minerals — add NPK fertilizer for mineral crops", "Never burn peat soil — it releases massive CO2 and destroys the soil permanently", "Blueberries and cranberries are your best option — no soil amendment needed"]
+    }
+};
+
+function analyzeSoil() {
+    const region = document.getElementById('soilRegion').value;
+    const soilType = document.getElementById('soilColor').value;
+    if (!region || !soilType) {
+        alert('Please select both your region and soil type!');
+        return;
+    }
+    const soil = SOIL_DATA[soilType];
+    if (!soil) return;
+    const crops = soil.crops[region] || soil.crops.default;
+    document.getElementById('soilIconDisplay').textContent = soil.icon;
+    document.getElementById('soilTypeName').textContent = soil.name;
+    document.getElementById('soilScientificName').textContent = soil.scientific;
+    document.getElementById('soilPH').textContent = soil.ph;
+    document.getElementById('soilDrainage').textContent = soil.drainage;
+    document.getElementById('soilFertility').textContent = soil.fertility;
+    document.getElementById('soilCropCards').innerHTML = crops.map(c => `
+        <div class="soil-crop-card">
+            <div class="sc-rank">${c.rank}</div>
+            <div class="sc-emoji">${c.emoji}</div>
+            <h4>${c.name}</h4>
+            <p>Expected Yield: ${c.yield}</p>
+            <small>${c.note}</small>
+        </div>`).join('');
+    document.getElementById('soilImproveTips').innerHTML = soil.tips.map(t => `<li>${t}</li>`).join('');
+    document.getElementById('soilResult').style.display = 'block';
+    document.getElementById('soilResult').scrollIntoView({behavior:'smooth'});
+}
+
+// ── YIELD DATA
+const YIELD_DATA = {
+    "Tomato": {
+        emoji:"🍅", increase:"40-60%", time:"Same season", roi:"3-5x investment",
+        tips:[
+            {title:"Use Determinate Varieties for Farms, Indeterminate for Gardens", desc:"Determinate varieties (Roma, Celebrity) produce all fruit at once — ideal for selling in bulk. Indeterminate (Big Boy, Brandywine) produce continuously — ideal for home use or premium markets."},
+            {title:"Remove Suckers Religiously", desc:"Suckers are shoots that grow between the stem and branch. Removing them directs all energy into fruit production instead of leaf growth. Remove suckers when they are under 5cm — use your fingers, not a knife, to avoid disease."},
+            {title:"Deep Plant Your Seedlings", desc:"Bury tomato seedlings up to 2/3 of the stem underground. Tomatoes grow roots all along the buried stem, creating a massive root system that absorbs more water and nutrients, producing 40% higher yields."},
+            {title:"Calcium Spray Prevents Blossom End Rot", desc:"Blossom end rot (black bottom on fruit) causes up to 30% yield loss. Spray calcium chloride solution (1 tablespoon per 4 litres water) directly on flowers and developing fruits every 2 weeks."},
+            {title:"Consistent Watering is Critical", desc:"Irregular watering causes cracking and blossom end rot. Water deeply every 2-3 days. Drip irrigation increases yield by 35% vs overhead watering. Mulch the base to retain moisture between watering."},
+        ],
+        mistakes:[
+            {title:"Overfeeding Nitrogen After Flowering", desc:"High nitrogen makes beautiful green plants but produces almost no fruit. Switch to high potassium fertilizer as soon as flowers appear. Nitrogen feeds leaves, potassium feeds fruit."},
+            {title:"Planting Too Close Together", desc:"Tomatoes planted less than 60cm apart compete for nutrients, reduce air circulation, and invite disease. Proper spacing of 75-90cm between plants increases yield by up to 25%."},
+            {title:"Watering the Leaves", desc:"Wet tomato leaves cause early blight, late blight and leaf mold — the top three yield killers. Always water at the base of the plant. Drip irrigation is best."},
+        ]
+    },
+    "Maize": {
+        emoji:"🌽", increase:"50-80%", time:"Same season", roi:"4-8x investment",
+        tips:[
+            {title:"Plant in Blocks Not Rows", desc:"Maize is wind-pollinated. Single rows produce poorly pollinated cobs with missing kernels. Plant in blocks of at least 4 rows wide. This single change can increase yield by 30%."},
+            {title:"Apply Urea at Knee Height", desc:"The most important fertilizer application for maize is topdress nitrogen when plants are knee height (30-40cm). This feeds the plant during the critical vegetative growth stage that determines final yield."},
+            {title:"Correct Plant Population is Critical", desc:"Too many plants causes competition. Too few wastes land. Optimum population is 53,000-66,000 plants per hectare (spacing 75cm between rows, 25cm in the row). Population determines 40% of final yield."},
+            {title:"Control Fall Armyworm Early", desc:"Fall armyworm (FAW) can destroy an entire crop in 72 hours. Scout fields twice per week. Apply insecticide when you see the first signs of feeding. Early treatment saves the crop — late treatment wastes money."},
+            {title:"Use Certified Hybrid Seed", desc:"Hybrid maize outyields open-pollinated varieties by 60-100%. Certified seed from reputable companies ensures germination rate above 95%. Never save seed from hybrid maize for replanting — it loses hybrid vigour."},
+        ],
+        mistakes:[
+            {title:"Planting Late — Timing is Everything", desc:"Every week of delayed planting reduces maize yield by 5-7%. Plant within the first 2 weeks of rains. Late planted maize pollinates during drought stress, causing poor grain set and up to 50% yield loss."},
+            {title:"Skipping Weed Control in First 6 Weeks", desc:"Maize is most sensitive to weed competition in the first 6 weeks. Weeds during this period reduce yield by 40-60%. Weed at 2-3 weeks and 5-6 weeks after emergence. After 8 weeks the canopy controls weeds naturally."},
+            {title:"Under-applying Fertilizer", desc:"Many farmers apply half the recommended rate to save money but lose far more in yield than they saved. Apply the full recommended rate — underfertilizing is always more expensive in the end."},
+        ]
+    },
+    "Potato": {
+        emoji:"🥔", increase:"40-60%", time:"Same season", roi:"3-5x investment",
+        tips:[
+            {title:"Use Certified Seed Potato", desc:"Certified seed potato is tested disease-free and produces 40-50% higher yields than saved seed. Potato viruses accumulate in saved seed over years, causing progressive yield decline. Renew your seed every 2-3 seasons."},
+            {title:"Hill the Plants Twice During Growth", desc:"Mounding soil around potato stems at 3 weeks and again at 6 weeks after emergence dramatically increases tuber production. Each stem segment covered by soil produces new tubers. Hilling can increase yield by 35%."},
+            {title:"Harvest at the Right Time", desc:"Early harvest gives small potatoes. Late harvest causes skin damage from soil organisms. Harvest when 80% of leaves have turned yellow. Test by rubbing a tuber — mature potato skin does not peel off."},
+            {title:"Rotate Every Season — Never Same Field Twice in a Row", desc:"Potatoes grown on the same land two seasons running suffer from soil-borne diseases (late blight, scab, nematodes) that can reduce yield by 60%. A 3-year rotation with maize and legumes is essential."},
+            {title:"Correct Seed Spacing", desc:"50-70cm between rows and 25-30cm within rows is optimal. Closer spacing increases number of tubers but reduces size. Wider spacing increases tuber size but reduces total number. Match spacing to your target market."},
+        ],
+        mistakes:[
+            {title:"Planting Whole Potatoes Instead of Cut Pieces", desc:"Cutting seed potatoes to include 2-3 eyes per piece uses seed more efficiently and produces the same yield as whole potatoes. Each piece should weigh 40-60g. Dust cut surfaces with ash or fungicide before planting."},
+            {title:"Watering During Harvest Period", desc:"Irrigating within 2 weeks of harvest causes tuber diseases and significantly reduces storage life. Stop all irrigation when leaves start yellowing."},
+            {title:"Ignoring Late Blight in Wet Conditions", desc:"Late blight can destroy an entire crop in 5 days under wet conditions. Apply preventive copper fungicide before rains and continue every 7 days during wet seasons. Prevention is 10x cheaper than cure."},
+        ]
+    },
+    "Rice": {
+        emoji:"🌾", increase:"40-70%", time:"Same season", roi:"3-6x investment",
+        tips:[
+            {title:"System of Rice Intensification (SRI)", desc:"SRI method transplants single young seedlings (8-12 days old) at wider spacing (25x25cm) with intermittent irrigation instead of constant flooding. SRI consistently produces 40-70% higher yields using 30% less water."},
+            {title:"Transplant Young Seedlings Only", desc:"Most farmers transplant at 25-30 days — too old. Young seedlings (8-15 days) have higher tillering capacity and produce 3-5x more tillers per plant. More tillers means more panicles means more grain."},
+            {title:"Split Nitrogen Application into 3 Doses", desc:"Apply nitrogen at basal (planting), tillering, and panicle initiation stages. Single application wastes up to 50% through leaching. Split application increases nitrogen use efficiency and produces 25-35% higher yields."},
+            {title:"Drain Field 2 Weeks Before Harvest", desc:"Draining rice fields 10-14 days before harvest strengthens stems, prevents lodging, and allows machinery access. It also speeds grain filling and reduces grain moisture for easier milling."},
+            {title:"Use Short-Duration Varieties for Double Cropping", desc:"Short-duration varieties (90-110 days) allow two crops per year where only one was possible. Modern short-duration varieties often outyield traditional long-duration varieties."},
+        ],
+        mistakes:[
+            {title:"Transplanting Old Seedlings", desc:"Every extra week a seedling sits in the nursery beyond 15 days costs you 5-10% of final yield. Old seedlings (30+ days) take longer to establish, produce fewer tillers, and yield 20-40% less than young seedlings."},
+            {title:"Continuous Flooding Wastes Water and Reduces Yield", desc:"Alternating wet-dry cycles (AWD) saves 30% of irrigation water while maintaining or increasing yield. The aerobic phase strengthens roots and improves nutrient uptake."},
+            {title:"Transplanting Too Many Seedlings Per Hill", desc:"Traditional farmers transplant 5-8 seedlings per hill. SRI uses 1 seedling per hill. More seedlings create competition — single seedlings produce 3-5x more tillers than crowded ones."},
+        ]
+    },
+    "Coffee": {
+        emoji:"☕", increase:"60-100%", time:"2-3 seasons", roi:"5-10x investment",
+        tips:[
+            {title:"Shade Trees Increase Quality and Yield", desc:"Coffee grown under shade trees produces 30-40% less volume but commands 3x the price for specialty grade. Shade reduces temperature stress, slows cherry ripening for better flavour development, and reduces disease pressure."},
+            {title:"Selective Hand Picking Only Red Cherries", desc:"Picking only 100% ripe red cherries is the single biggest quality improvement possible. Mixed harvests (green and red together) reduce cup quality by 60% and destroy premium market access."},
+            {title:"Prune Aggressively After Harvest", desc:"Remove all dead wood, crowded branches and branches that produced in the past 2 seasons. Productive coffee comes from 2nd and 3rd year wood. Proper pruning increases next season's yield by 40-60%."},
+            {title:"Mulch Heavily Around the Base", desc:"Coffee is extremely sensitive to soil moisture stress. 15-20cm of mulch around each tree retains moisture, regulates soil temperature, and adds organic matter. Mulching increases yield by 25-35%."},
+            {title:"Apply Fertilizer in Two Splits Around the Rains", desc:"Apply NPK just before the long rains begin and again at the start of the short rains. Coffee needs nitrogen for leaf growth and potassium for cherry development. Never apply during dry season."},
+        ],
+        mistakes:[
+            {title:"Strip Harvesting — Picking All Cherries at Once", desc:"Strip harvesting collects unripe, ripe and overripe cherries together. This method reduces cup quality so severely that processors pay 50-70% less for strip-harvested coffee than selectively harvested."},
+            {title:"Neglecting Post-Harvest Processing", desc:"Coffee fermented too long develops sour, unpleasant flavors. Ferment washed coffee for 24-48 hours maximum. Rinse well and dry to 11% moisture. Processing quality determines 40% of final value."},
+            {title:"Crowding Coffee Plants", desc:"Coffee planted too densely competes for light and air, inviting CBD (coffee berry disease) and leaf rust. Spacing of 2.5m x 2.5m for most varieties allows proper canopy development."},
+        ]
+    },
+    "Banana": {
+        emoji:"🍌", increase:"40-60%", time:"Next ratoon crop", roi:"4-7x investment",
+        tips:[
+            {title:"Sucker Management — Keep Only the Best", desc:"Allow only ONE ratoon (successor) sucker to develop per plant. Choose the strongest sword sucker at 60-90cm height. Removing all other suckers directs all plant energy to the main bunch and the chosen successor."},
+            {title:"Deleafing Infected Leaves Immediately", desc:"Remove all yellowing, diseased or wind-damaged leaves immediately. A banana plant has 10-12 functional leaves — each diseased leaf reduces bunch weight by 1-2kg. Clean plants produce bunches 30-40% heavier."},
+            {title:"Bunch Management — Remove Bell After Last Hand", desc:"Remove the bell (male flower) 10-14 days after the last hand forms. The bell serves no purpose after this and removing it directs nutrients into filling the fruit hands. This increases bunch weight by 8-12%."},
+            {title:"Support Bunches to Prevent Lodging", desc:"Banana plants topple under the weight of heavy bunches in wind, destroying the fruit and the plant. Support each bunch with a bamboo prop or string tied to a neighbouring plant."},
+            {title:"Deep, Frequent Watering", desc:"Bananas transpire massive amounts of water. Each plant needs 25-40mm of water per week. Drip irrigation at the root zone produces 40% higher yields than no irrigation. Water stress reduces bunch size permanently."},
+        ],
+        mistakes:[
+            {title:"Allowing Too Many Suckers to Grow", desc:"Unmanaged banana plants produce 5-10 suckers that compete for nutrients. Each extra sucker reduces bunch weight by 15-20%. Most farmers lose 40-60% of potential yield by not removing suckers."},
+            {title:"Harvesting Too Early or Too Late", desc:"Bananas harvested too early have low sugar content and poor shelf life. Harvested too late they over-ripen before reaching the market. Harvest when fingers are round (not angular) and skin is still green."},
+            {title:"Neglecting Panama Disease Management", desc:"Panama disease (Fusarium wilt) has no cure once present in soil. Prevent by using clean planting material, avoiding movement of soil between plots, and planting resistant varieties where available."},
+        ]
+    },
+    "Mango": {
+        emoji:"🥭", increase:"50-80%", time:"Next season", roi:"4-8x investment",
+        tips:[
+            {title:"Induce Flowering with Chemical or Water Stress", desc:"In areas with irregular seasons, applying potassium nitrate spray (1%) or withholding irrigation for 3-4 weeks induces uniform flowering. This synchronises harvest timing and can increase marketable yield by 50%."},
+            {title:"Prune After Harvest Every Season", desc:"Prune 30-50cm of each shoot tip after harvest. This forces uniform new growth that will produce next season's flowers. Unpruned mangoes produce alternate bearing (good year, bad year) — pruning eliminates this."},
+            {title:"Thinning Fruits Increases Size and Value", desc:"Remove 30-40% of fruit clusters when fruits are marble size. This seems counterintuitive but produces fewer, larger fruits worth 3-5x more in premium markets."},
+            {title:"Stop Irrigation 2 Months Before Expected Flowering", desc:"Mango flowers are triggered by stress — specifically cool dry conditions. Irrigating during the stress period prevents flowering. Resume irrigation only when flowers appear."},
+            {title:"Apply Potassium and Phosphorus Before Flowering", desc:"Apply potassium sulfate and phosphate fertilizer 6-8 weeks before flowering season. These nutrients support flower development, fruit set and fruit quality. Nitrogen at this stage causes vegetative growth instead of flowers."},
+        ],
+        mistakes:[
+            {title:"Watering During Flowering", desc:"This is the single biggest mango yield killer. Even one irrigation during full flowering causes flower drop and complete crop failure that season. Never water a mango tree in full flower."},
+            {title:"Allowing Mango Hoppers and Tip Borers to Establish", desc:"Mango hopper destroys flowers and reduces yield by 40-70%. Monitor from flower bud stage and spray insecticide immediately when hoppers are seen."},
+            {title:"Harvesting Based on Colour Alone", desc:"Mango colour is unreliable for harvest timing — some varieties never change colour when ripe. Harvest based on shoulder fullness (fruit rounds off near stem) and 90-120 days from full flower."},
+        ]
+    },
+    "Wheat": {
+        emoji:"🌾", increase:"30-50%", time:"Same season", roi:"3-5x investment",
+        tips:[
+            {title:"Plant at Optimal Time — Every Week Matters", desc:"Wheat has a critical planting window. Early planting produces 20-30% more yield than late planting. Plant at the beginning of the cool season as soil temperature drops below 25°C."},
+            {title:"Seed Rate and Uniform Distribution", desc:"Most farmers either under-seed or over-seed. Optimum seed rate is 100-125kg/ha for most varieties. Uniform distribution with a seed drill produces 20-25% higher yields than broadcasting by hand."},
+            {title:"Apply Nitrogen at the Right Growth Stage", desc:"Apply nitrogen fertilizer in two splits — half at planting (base) and half at tillering stage (3-4 weeks after emergence). Late nitrogen application at flag leaf stage is also proven to increase grain protein and yield."},
+            {title:"Scout for Rust Diseases Weekly", desc:"Yellow rust, brown rust and stem rust can destroy 40-60% of yield in 2 weeks. Scout every week from tillering stage. Apply fungicide immediately at first sign — don't wait. Prevention is far cheaper than cure."},
+            {title:"Harvest at Correct Moisture Content", desc:"Harvest wheat when grain moisture is 14-18%. Too early and combine causes shattering losses. Too late and rain causes quality loss and mycotoxin contamination. Use a moisture meter if available."},
+        ],
+        mistakes:[
+            {title:"Using Same Variety for Many Years", desc:"Wheat rust and other diseases evolve to overcome variety resistance in 5-7 years. Many farmers still plant varieties released 20 years ago that have lost their resistance. Update to current recommended varieties regularly."},
+            {title:"Shallow Tillage that Leaves a Hard Layer", desc:"Shallow tillage repeated over years creates a hardpan at 15-20cm depth that restricts root growth and dramatically reduces yield. Deep ploughing every 3-4 years breaks this layer and restores yield potential."},
+            {title:"Burning Crop Residue", desc:"Burning wheat straw destroys organic matter and kills beneficial soil organisms. Incorporate straw into the soil or use it as livestock feed. This single change improves soil health and reduces fertilizer needs."},
+        ]
+    }
+};
+
+function renderYieldGrid() {
+    document.getElementById('yieldCropGrid').innerHTML = Object.entries(YIELD_DATA).map(([name, d]) => `
+        <div class="yield-crop-card" onclick="showYieldDetail('${name}')">
+            <div class="yc-emoji">${d.emoji}</div>
+            <h4>${name}</h4>
+        </div>`).join('');
+    document.getElementById('yieldCropGrid').style.display = 'grid';
+    document.getElementById('yieldDetail').style.display = 'none';
+}
+
+function showYieldDetail(name) {
+    const d = YIELD_DATA[name];
+    document.getElementById('yieldCropGrid').style.display = 'none';
+    document.getElementById('yieldDetail').style.display = 'block';
+    document.getElementById('yieldEmoji').textContent = d.emoji;
+    document.getElementById('yieldCropName').textContent = name;
+    document.getElementById('yieldSubtitle').textContent = 'Yield Improvement Guide — Based on Global Agricultural Research';
+    document.getElementById('yieldIncrease').textContent = d.increase;
+    document.getElementById('yieldTime').textContent = d.time;
+    document.getElementById('yieldROI').textContent = d.roi;
+    document.getElementById('yieldTips').innerHTML = d.tips.map((t,i) => `
+        <div class="yield-tip-card">
+            <div class="tip-num">${i+1}</div>
+            <div class="tip-content">
+                <h5>${t.title}</h5>
+                <p>${t.desc}</p>
+            </div>
+        </div>`).join('');
+    document.getElementById('yieldMistakes').innerHTML = d.mistakes.map(m => `
+        <div class="yield-warning">
+            <h5>⚠️ ${m.title}</h5>
+            <p>${m.desc}</p>
+        </div>`).join('');
+    document.getElementById('yieldDetail').scrollIntoView({behavior:'smooth'});
+}
+
+function showYieldGrid() {
+    document.getElementById('yieldCropGrid').style.display = 'grid';
+    document.getElementById('yieldDetail').style.display = 'none';
+}
+
 // ── Scanner
 function previewImage(event) {
-    const file = event.target.files[0]; if(!file) return;
-    const reader = new FileReader();
-    reader.onload = e => { document.getElementById('previewImg').src=e.target.result; document.getElementById('preview').style.display='block'; document.getElementById('scanBtn').style.display='block'; document.getElementById('result').style.display='none'; };
+    const file=event.target.files[0]; if(!file) return;
+    const reader=new FileReader();
+    reader.onload=e=>{document.getElementById('previewImg').src=e.target.result;document.getElementById('preview').style.display='block';document.getElementById('scanBtn').style.display='block';document.getElementById('result').style.display='none';};
     reader.readAsDataURL(file);
 }
 function scanImage() {
-    const fi = document.getElementById('fileInput'); if(!fi.files[0]) return;
-    document.getElementById('loading').style.display='block'; document.getElementById('scanBtn').style.display='none'; document.getElementById('result').style.display='none';
-    const fd = new FormData(); fd.append('image', fi.files[0]);
+    const fi=document.getElementById('fileInput'); if(!fi.files[0]) return;
+    document.getElementById('loading').style.display='block';document.getElementById('scanBtn').style.display='none';document.getElementById('result').style.display='none';
+    const fd=new FormData(); fd.append('image',fi.files[0]);
     fetch('/predict',{method:'POST',body:fd}).then(r=>r.json()).then(d=>{
-        document.getElementById('loading').style.display='none'; document.getElementById('result').style.display='block';
+        document.getElementById('loading').style.display='none';document.getElementById('result').style.display='block';
         document.getElementById('diseaseName').textContent=d.disease||'Unknown';
         document.getElementById('confidenceScore').textContent=d.confidence||'-%';
         document.getElementById('confidenceText').textContent=d.confidence||'-';
@@ -498,25 +1298,22 @@ function scanImage() {
         document.getElementById('severity').textContent=d.severity||'-';
         document.getElementById('status').textContent=d.status||'-';
         document.getElementById('treatment').textContent=d.treatment||'-';
-    }).catch(()=>{ document.getElementById('loading').style.display='none'; alert('Error scanning. Try again.'); });
+    }).catch(()=>{document.getElementById('loading').style.display='none';alert('Error scanning. Try again.');});
 }
-function resetScan() {
-    document.getElementById('fileInput').value=''; document.getElementById('preview').style.display='none';
-    document.getElementById('scanBtn').style.display='none'; document.getElementById('result').style.display='none';
-}
+function resetScan(){document.getElementById('fileInput').value='';document.getElementById('preview').style.display='none';document.getElementById('scanBtn').style.display='none';document.getElementById('result').style.display='none';}
 
 // ── Journal
-let selectedPlantId = null;
-async function addPlant() {
-    const name=document.getElementById('plantName').value.trim(), type=document.getElementById('plantType').value;
+let selectedPlantId=null;
+async function addPlant(){
+    const name=document.getElementById('plantName').value.trim(),type=document.getElementById('plantType').value;
     if(!name){alert('Please enter a plant name!');return;}
     const res=await fetch('/api/plants',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,type})});
     const plant=await res.json();
-    document.getElementById('plantName').value=''; document.getElementById('plantType').value='';
-    loadPlants(); selectPlant(plant.id,plant.name,plant.type,plant.date_added);
+    document.getElementById('plantName').value='';document.getElementById('plantType').value='';
+    loadPlants();selectPlant(plant.id,plant.name,plant.type,plant.date_added);
 }
-async function loadPlants() {
-    const res=await fetch('/api/plants'), plants=await res.json(), list=document.getElementById('plantList');
+async function loadPlants(){
+    const res=await fetch('/api/plants'),plants=await res.json(),list=document.getElementById('plantList');
     if(!plants.length){list.innerHTML='<div style="padding:20px;text-align:center;color:var(--gray);font-size:13px;">No plants yet! 🌱</div>';return;}
     list.innerHTML=plants.map(p=>`
         <div class="plant-item ${p.id===selectedPlantId?'active':''}" onclick="selectPlant(${p.id},'${p.name}','${p.type}','${p.date_added}')">
@@ -525,35 +1322,35 @@ async function loadPlants() {
             <button class="delete-btn" onclick="deletePlant(event,${p.id})">🗑</button>
         </div>`).join('');
 }
-function selectPlant(id,name,type,dateAdded) {
+function selectPlant(id,name,type,dateAdded){
     selectedPlantId=id;
-    document.getElementById('emptyState').style.display='none'; document.getElementById('plantDetail').style.display='block';
+    document.getElementById('emptyState').style.display='none';document.getElementById('plantDetail').style.display='block';
     document.getElementById('detailEmoji').textContent=getEmoji(type);
     document.getElementById('detailName').textContent=name;
     document.getElementById('detailMeta').textContent=`${type||'Plant'} · Added ${dateAdded}`;
-    loadEntries(id); loadPlants();
+    loadEntries(id);loadPlants();
 }
 function getEmoji(type){if(!type)return'🌱';return type.split(' ')[0]||'🌱';}
-function previewEntryPhoto(event) {
+function previewEntryPhoto(event){
     const file=event.target.files[0];if(!file)return;
     const reader=new FileReader();
     reader.onload=e=>{document.getElementById('previewSmallImg').src=e.target.result;document.getElementById('photoPreviewSmall').style.display='block';};
     reader.readAsDataURL(file);
 }
-async function saveEntry() {
+async function saveEntry(){
     if(!selectedPlantId)return;
-    const note=document.getElementById('entryNote').value.trim(), photoInput=document.getElementById('entryPhotoInput');
+    const note=document.getElementById('entryNote').value.trim(),photoInput=document.getElementById('entryPhotoInput');
     if(!note&&!photoInput.files[0]){alert('Please add a note or photo!');return;}
-    const fd=new FormData(); fd.append('note',note);
+    const fd=new FormData();fd.append('note',note);
     if(photoInput.files[0])fd.append('photo',photoInput.files[0]);
     await fetch(`/api/plants/${selectedPlantId}/entries`,{method:'POST',body:fd});
-    document.getElementById('entryNote').value=''; document.getElementById('entryPhotoInput').value='';
+    document.getElementById('entryNote').value='';document.getElementById('entryPhotoInput').value='';
     document.getElementById('photoPreviewSmall').style.display='none';
-    loadEntries(selectedPlantId); loadPlants();
+    loadEntries(selectedPlantId);loadPlants();
 }
-async function loadEntries(plantId) {
-    const res=await fetch(`/api/plants/${plantId}/entries`), entries=await res.json(), timeline=document.getElementById('timeline');
-    if(!entries.length){timeline.innerHTML='<div class="no-entries">No entries yet — add your first one! 📷</div>';return;}
+async function loadEntries(plantId){
+    const res=await fetch(`/api/plants/${plantId}/entries`),entries=await res.json(),timeline=document.getElementById('timeline');
+    if(!entries.length){timeline.innerHTML='<div class="no-entries">No entries yet! 📷</div>';return;}
     timeline.innerHTML=entries.map(e=>`
         <div class="timeline-entry">
             <div class="entry-date">📅 ${e.date}</div>
@@ -561,7 +1358,7 @@ async function loadEntries(plantId) {
             ${e.photo?`<div class="entry-photo"><img src="${e.photo}" alt="Plant photo"></div>`:''}
         </div>`).join('');
 }
-async function deletePlant(event,id) {
+async function deletePlant(event,id){
     event.stopPropagation();
     if(!confirm('Delete this plant and all its entries?'))return;
     await fetch(`/api/plants/${id}`,{method:'DELETE'});
@@ -571,6 +1368,10 @@ async function deletePlant(event,id) {
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
