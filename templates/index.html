@@ -3,641 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriXenova AI — by Quelova</title>
+    <title>AgriXenova AI</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --dark:   #0D0D0D;
-            --dark2:  #141414;
-            --dark3:  #1A1A1A;
-            --card:   #1E1E1E;
-            --gold:   #F5A623;
-            --terra:  #C1440E;
-            --lime:   #97BC62;
-            --white:  #FFFFFF;
-            --gray:   #888888;
-            --border: #2A2A2A;
+            --dark:#0D0D0D; --dark2:#141414; --dark3:#1A1A1A; --card:#1E1E1E;
+            --gold:#F5A623; --terra:#C1440E; --lime:#97BC62;
+            --white:#FFFFFF; --gray:#888888; --border:#2A2A2A;
         }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--dark);
-            color: var(--white);
-            min-height: 100vh;
-        }
-        .kente {
-            height: 4px;
-            background: repeating-linear-gradient(
-                90deg,
-                var(--gold) 0px, var(--gold) 20px,
-                var(--terra) 20px, var(--terra) 40px,
-                #1B5E20 40px, #1B5E20 60px,
-                var(--dark) 60px, var(--dark) 80px
-            );
-        }
-        .navbar {
-            background: var(--dark2);
-            border-bottom: 1px solid var(--border);
-            padding: 18px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .nav-logo .dot {
-            width: 38px; height: 38px;
-            background: linear-gradient(135deg, var(--gold), var(--terra));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        .nav-logo h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--gold), var(--lime));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .nav-sub { font-size: 11px; color: var(--gray); margin-top: -2px; }
-        .nav-links { display: flex; gap: 12px; }
-        .tab-btn {
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-            font-family: 'Outfit', sans-serif;
-        }
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--gold), var(--terra));
-            color: white;
-        }
-        .tab-btn.outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--gray);
-        }
-        .tab-btn.outline:hover { border-color: var(--gold); color: var(--gold); }
+        body { font-family:'Outfit',sans-serif; background:var(--dark); color:var(--white); min-height:100vh; }
+        .kente { height:4px; background:repeating-linear-gradient(90deg,var(--gold) 0px,var(--gold) 20px,var(--terra) 20px,var(--terra) 40px,#1B5E20 40px,#1B5E20 60px,var(--dark) 60px,var(--dark) 80px); }
+        .navbar { background:var(--dark2); border-bottom:1px solid var(--border); padding:18px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .nav-logo { display:flex; align-items:center; gap:12px; }
+        .nav-logo .dot { width:38px; height:38px; background:linear-gradient(135deg,var(--gold),var(--terra)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+        .nav-logo h1 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; background:linear-gradient(90deg,var(--gold),var(--lime)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-sub { font-size:11px; color:var(--gray); margin-top:-2px; }
+        .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+        .tab-btn { padding:8px 14px; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; border:none; transition:all 0.3s; font-family:'Outfit',sans-serif; }
+        .tab-btn.active { background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; }
+        .tab-btn.outline { background:transparent; border:1px solid var(--border); color:var(--gray); }
+        .tab-btn.outline:hover { border-color:var(--gold); color:var(--gold); }
+        .page { display:none; }
+        .page.active { display:block; }
 
-        /* PAGES */
-        .page { display: none; }
-        .page.active { display: block; }
+        /* SCANNER */
+        .hero { text-align:center; padding:70px 20px 50px; position:relative; overflow:hidden; }
+        .hero::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(245,166,35,0.08) 0%,transparent 70%); pointer-events:none; }
+        .hero-badge { display:inline-block; background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.3); color:var(--gold); padding:6px 18px; border-radius:20px; font-size:12px; font-weight:600; letter-spacing:1px; margin-bottom:24px; }
+        .hero h2 { font-family:'Syne',sans-serif; font-size:48px; font-weight:800; line-height:1.1; margin-bottom:16px; }
+        .hero h2 span { background:linear-gradient(90deg,var(--gold),var(--terra)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .hero p { color:var(--gray); font-size:16px; max-width:500px; margin:0 auto 30px; line-height:1.6; }
+        .hero-stats { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
+        .stat { text-align:center; }
+        .stat strong { display:block; font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:var(--gold); }
+        .stat span { font-size:12px; color:var(--gray); }
+        .main { max-width:680px; margin:0 auto; padding:0 20px 60px; }
+        .upload-box { background:var(--card); border:2px dashed var(--border); border-radius:20px; padding:55px 30px; text-align:center; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden; }
+        .upload-box:hover { border-color:var(--gold); transform:translateY(-2px); }
+        .upload-icon { font-size:64px; margin-bottom:18px; display:block; }
+        .upload-box h3 { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:var(--white); margin-bottom:8px; }
+        .upload-box p { color:var(--gray); font-size:14px; }
+        .upload-box .supported { display:inline-block; margin-top:16px; background:var(--border); padding:5px 14px; border-radius:20px; font-size:11px; color:var(--gray); }
+        #fileInput { display:none; }
+        #preview { display:none; margin-top:20px; border-radius:16px; overflow:hidden; border:1px solid var(--border); text-align:center; background:var(--card); padding:15px; }
+        #preview img { max-width:100%; max-height:280px; border-radius:10px; object-fit:cover; }
+        #preview p { color:var(--gray); font-size:12px; margin-top:10px; }
+        .scan-btn { display:none; width:100%; margin-top:16px; padding:18px; background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; border:none; border-radius:14px; font-family:'Syne',sans-serif; font-size:17px; font-weight:700; cursor:pointer; transition:all 0.3s; }
+        .scan-btn:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(245,166,35,0.3); }
+        #loading { display:none; text-align:center; padding:40px 20px; background:var(--card); border-radius:16px; margin-top:16px; border:1px solid var(--border); }
+        .spinner { width:52px; height:52px; border:4px solid var(--border); border-top:4px solid var(--gold); border-radius:50%; animation:spin 0.9s linear infinite; margin:0 auto 18px; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        #loading h4 { font-family:'Syne',sans-serif; font-size:17px; color:var(--white); margin-bottom:6px; }
+        #loading p { color:var(--gray); font-size:13px; }
+        #result { display:none; margin-top:16px; }
+        .result-card { background:var(--card); border-radius:20px; border:1px solid var(--border); overflow:hidden; }
+        .result-top { background:linear-gradient(135deg,#1a1200,#1a0800); border-bottom:1px solid var(--border); padding:22px 25px; display:flex; align-items:center; gap:14px; }
+        .result-top .icon-circle { width:48px; height:48px; background:linear-gradient(135deg,var(--gold),var(--terra)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+        .result-top h3 { font-family:'Syne',sans-serif; font-size:19px; font-weight:700; color:var(--white); }
+        .result-top p { font-size:12px; color:var(--gray); margin-top:2px; }
+        .confidence-badge { margin-left:auto; background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; padding:6px 14px; border-radius:20px; font-size:14px; font-weight:700; font-family:'Syne',sans-serif; flex-shrink:0; }
+        .result-body { padding:22px 25px; }
+        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+        .info-item { background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:14px; }
+        .info-item .label { font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; }
+        .info-item .value { font-size:15px; font-weight:600; color:var(--white); }
+        .treatment-box { background:linear-gradient(135deg,rgba(76,175,80,0.08),rgba(151,188,98,0.05)); border:1px solid rgba(76,175,80,0.2); border-left:4px solid var(--lime); border-radius:12px; padding:18px; margin-bottom:18px; }
+        .treatment-box h4 { font-family:'Syne',sans-serif; font-size:14px; color:var(--lime); margin-bottom:10px; }
+        .treatment-box p { color:#ccc; font-size:14px; line-height:1.7; }
+        .scan-again { width:100%; padding:14px; background:transparent; color:var(--gold); border:1.5px solid var(--gold); border-radius:12px; font-family:'Syne',sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:all 0.3s; }
+        .scan-again:hover { background:rgba(245,166,35,0.08); }
+        .features { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:30px; }
+        .feat { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; text-align:center; }
+        .feat .f-icon { font-size:28px; margin-bottom:8px; }
+        .feat h4 { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--white); margin-bottom:4px; }
+        .feat p { font-size:11px; color:var(--gray); }
 
-        /* ── SCANNER PAGE ── */
-        .hero {
-            text-align: center;
-            padding: 70px 20px 50px;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px; left: 50%;
-            transform: translateX(-50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(245,166,35,0.1);
-            border: 1px solid rgba(245,166,35,0.3);
-            color: var(--gold);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-        .hero h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-        .hero h2 span {
-            background: linear-gradient(90deg, var(--gold), var(--terra));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p { color: var(--gray); font-size: 16px; max-width: 500px; margin: 0 auto 30px; line-height: 1.6; }
-        .hero-stats { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .stat { text-align: center; }
-        .stat strong { display: block; font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--gold); }
-        .stat span { font-size: 12px; color: var(--gray); }
-        .main { max-width: 680px; margin: 0 auto; padding: 0 20px 60px; }
-        .upload-box {
-            background: var(--card);
-            border: 2px dashed var(--border);
-            border-radius: 20px;
-            padding: 55px 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .upload-box:hover { border-color: var(--gold); transform: translateY(-2px); }
-        .upload-icon { font-size: 64px; margin-bottom: 18px; display: block; }
-        .upload-box h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-        .upload-box p { color: var(--gray); font-size: 14px; }
-        .upload-box .supported { display: inline-block; margin-top: 16px; background: var(--border); padding: 5px 14px; border-radius: 20px; font-size: 11px; color: var(--gray); }
-        #fileInput { display: none; }
-        #preview { display: none; margin-top: 20px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); text-align: center; background: var(--card); padding: 15px; }
-        #preview img { max-width: 100%; max-height: 280px; border-radius: 10px; object-fit: cover; }
-        #preview p { color: var(--gray); font-size: 12px; margin-top: 10px; }
-        .scan-btn { display: none; width: 100%; margin-top: 16px; padding: 18px; background: linear-gradient(135deg, var(--gold), var(--terra)); color: white; border: none; border-radius: 14px; font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .scan-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,166,35,0.3); }
-        #loading { display: none; text-align: center; padding: 40px 20px; background: var(--card); border-radius: 16px; margin-top: 16px; border: 1px solid var(--border); }
-        .spinner { width: 52px; height: 52px; border: 4px solid var(--border); border-top: 4px solid var(--gold); border-radius: 50%; animation: spin 0.9s linear infinite; margin: 0 auto 18px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #loading h4 { font-family: 'Syne', sans-serif; font-size: 17px; color: var(--white); margin-bottom: 6px; }
-        #loading p { color: var(--gray); font-size: 13px; }
-        #result { display: none; margin-top: 16px; }
-        .result-card { background: var(--card); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; }
-        .result-top { background: linear-gradient(135deg, #1a1200, #1a0800); border-bottom: 1px solid var(--border); padding: 22px 25px; display: flex; align-items: center; gap: 14px; }
-        .result-top .icon-circle { width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold), var(--terra)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-        .result-top h3 { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; color: var(--white); }
-        .result-top p { font-size: 12px; color: var(--gray); margin-top: 2px; }
-        .confidence-badge { margin-left: auto; background: linear-gradient(135deg, var(--gold), var(--terra)); color: white; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 700; font-family: 'Syne', sans-serif; flex-shrink: 0; }
-        .result-body { padding: 22px 25px; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .info-item { background: var(--dark3); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
-        .info-item .label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .info-item .value { font-size: 15px; font-weight: 600; color: var(--white); }
-        .treatment-box { background: linear-gradient(135deg, rgba(76,175,80,0.08), rgba(151,188,98,0.05)); border: 1px solid rgba(76,175,80,0.2); border-left: 4px solid var(--lime); border-radius: 12px; padding: 18px; margin-bottom: 18px; }
-        .treatment-box h4 { font-family: 'Syne', sans-serif; font-size: 14px; color: var(--lime); margin-bottom: 10px; }
-        .treatment-box p { color: #ccc; font-size: 14px; line-height: 1.7; }
-        .scan-again { width: 100%; padding: 14px; background: transparent; color: var(--gold); border: 1.5px solid var(--gold); border-radius: 12px; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .scan-again:hover { background: rgba(245,166,35,0.08); }
-        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
-        .feat { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; text-align: center; }
-        .feat .f-icon { font-size: 28px; margin-bottom: 8px; }
-        .feat h4 { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-        .feat p { font-size: 11px; color: var(--gray); }
+        /* JOURNAL */
+        .page-hero { text-align:center; padding:50px 20px 30px; }
+        .page-hero h2 { font-family:'Syne',sans-serif; font-size:38px; font-weight:800; margin-bottom:10px; }
+        .page-hero h2 span { background:linear-gradient(90deg,var(--gold),var(--terra)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .page-hero p { color:var(--gray); font-size:15px; }
+        .journal-main { max-width:1100px; margin:0 auto; padding:30px 20px 60px; display:grid; grid-template-columns:320px 1fr; gap:24px; }
+        .add-plant-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:20px; }
+        .add-plant-card h3 { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; margin-bottom:16px; }
+        .input-group { margin-bottom:12px; }
+        .input-group label { display:block; font-size:12px; color:var(--gray); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; }
+        .input-group input,.input-group select { width:100%; padding:10px 14px; background:var(--dark3); border:1px solid var(--border); border-radius:10px; color:var(--white); font-family:'Outfit',sans-serif; font-size:14px; outline:none; transition:border-color 0.3s; }
+        .input-group input:focus,.input-group select:focus { border-color:var(--gold); }
+        .input-group select option { background:var(--dark3); }
+        .add-btn { width:100%; padding:12px; background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; border:none; border-radius:10px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.3s; }
+        .add-btn:hover { transform:translateY(-1px); }
+        .plant-list-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+        .plant-item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:10px; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; gap:12px; }
+        .plant-item:hover { border-color:var(--gold); }
+        .plant-item.active { border-color:var(--gold); background:rgba(245,166,35,0.05); }
+        .plant-emoji { width:40px; height:40px; background:linear-gradient(135deg,rgba(245,166,35,0.15),rgba(193,68,14,0.1)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+        .plant-info { flex:1; min-width:0; }
+        .plant-info h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .plant-info p { font-size:12px; color:var(--gray); margin-top:2px; }
+        .delete-btn { background:none; border:none; color:var(--gray); cursor:pointer; font-size:16px; padding:4px; border-radius:6px; transition:all 0.3s; flex-shrink:0; }
+        .delete-btn:hover { color:#ff4444; background:rgba(255,68,68,0.1); }
+        .empty-state { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:60px 30px; text-align:center; }
+        .empty-state .e-icon { font-size:60px; margin-bottom:16px; }
+        .empty-state h3 { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:8px; }
+        .empty-state p { color:var(--gray); font-size:14px; }
+        #plantDetail { display:none; }
+        .detail-header { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:20px; display:flex; align-items:center; gap:16px; }
+        .detail-emoji { width:56px; height:56px; background:linear-gradient(135deg,var(--gold),var(--terra)); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
+        .detail-info h2 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; }
+        .detail-info p { color:var(--gray); font-size:13px; margin-top:3px; }
+        .add-entry-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:20px; }
+        .add-entry-card h3 { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:16px; }
+        .entry-textarea { width:100%; padding:12px 14px; background:var(--dark3); border:1px solid var(--border); border-radius:10px; color:var(--white); font-family:'Outfit',sans-serif; font-size:14px; outline:none; resize:vertical; min-height:80px; margin-bottom:12px; transition:border-color 0.3s; }
+        .entry-textarea:focus { border-color:var(--gold); }
+        .entry-actions { display:flex; gap:10px; align-items:center; }
+        .photo-upload-btn { padding:10px 16px; background:var(--dark3); border:1px solid var(--border); border-radius:10px; color:var(--gray); font-family:'Outfit',sans-serif; font-size:13px; cursor:pointer; transition:all 0.3s; white-space:nowrap; }
+        .photo-upload-btn:hover { border-color:var(--gold); color:var(--gold); }
+        #entryPhotoInput { display:none; }
+        .save-entry-btn { flex:1; padding:10px; background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; border:none; border-radius:10px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.3s; }
+        #photoPreviewSmall { display:none; margin-top:10px; }
+        #photoPreviewSmall img { height:80px; border-radius:8px; border:1px solid var(--border); }
+        .timeline-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+        .timeline-entry { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; margin-bottom:14px; position:relative; }
+        .timeline-entry::before { content:''; position:absolute; left:-1px; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,var(--gold),var(--terra)); border-radius:3px 0 0 3px; }
+        .entry-date { font-size:12px; color:var(--gold); font-weight:600; margin-bottom:8px; }
+        .entry-note { font-size:14px; color:#ccc; line-height:1.6; margin-bottom:10px; }
+        .entry-photo img { max-width:100%; max-height:200px; border-radius:10px; object-fit:cover; border:1px solid var(--border); }
+        .no-entries { text-align:center; padding:30px; color:var(--gray); font-size:14px; }
 
-        /* ── JOURNAL PAGE ── */
-        .journal-hero { text-align: center; padding: 50px 20px 30px; }
-        .journal-hero h2 { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; margin-bottom: 10px; }
-        .journal-hero h2 span { background: linear-gradient(90deg, var(--gold), var(--terra)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .journal-hero p { color: var(--gray); font-size: 15px; }
-        .journal-main { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
-        .add-plant-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 20px; }
-        .add-plant-card h3 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-        .input-group { margin-bottom: 12px; }
-        .input-group label { display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .input-group input, .input-group select { width: 100%; padding: 10px 14px; background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; color: var(--white); font-family: 'Outfit', sans-serif; font-size: 14px; outline: none; transition: border-color 0.3s; }
-        .input-group input:focus, .input-group select:focus { border-color: var(--gold); }
-        .input-group select option { background: var(--dark3); }
-        .add-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--gold), var(--terra)); color: white; border: none; border-radius: 10px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .add-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 15px rgba(245,166,35,0.3); }
-        .plant-list-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .plant-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 12px; }
-        .plant-item:hover { border-color: var(--gold); }
-        .plant-item.active { border-color: var(--gold); background: rgba(245,166,35,0.05); }
-        .plant-emoji { width: 40px; height: 40px; background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(193,68,14,0.1)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-        .plant-info { flex: 1; min-width: 0; }
-        .plant-info h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .plant-info p { font-size: 12px; color: var(--gray); margin-top: 2px; }
-        .delete-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 16px; padding: 4px; border-radius: 6px; transition: all 0.3s; flex-shrink: 0; }
-        .delete-btn:hover { color: #ff4444; background: rgba(255,68,68,0.1); }
-        .empty-state { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 60px 30px; text-align: center; }
-        .empty-state .e-icon { font-size: 60px; margin-bottom: 16px; }
-        .empty-state h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-        .empty-state p { color: var(--gray); font-size: 14px; }
-        #plantDetail { display: none; }
-        .detail-header { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
-        .detail-emoji { width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold), var(--terra)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
-        .detail-info h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
-        .detail-info p { color: var(--gray); font-size: 13px; margin-top: 3px; }
-        .add-entry-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 20px; }
-        .add-entry-card h3 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
-        .entry-textarea { width: 100%; padding: 12px 14px; background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; color: var(--white); font-family: 'Outfit', sans-serif; font-size: 14px; outline: none; resize: vertical; min-height: 80px; margin-bottom: 12px; transition: border-color 0.3s; }
-        .entry-textarea:focus { border-color: var(--gold); }
-        .entry-actions { display: flex; gap: 10px; align-items: center; }
-        .photo-upload-btn { padding: 10px 16px; background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; color: var(--gray); font-family: 'Outfit', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
-        .photo-upload-btn:hover { border-color: var(--gold); color: var(--gold); }
-        #entryPhotoInput { display: none; }
-        .save-entry-btn { flex: 1; padding: 10px; background: linear-gradient(135deg, var(--gold), var(--terra)); color: white; border: none; border-radius: 10px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .save-entry-btn:hover { transform: translateY(-1px); }
-        #photoPreviewSmall { display: none; margin-top: 10px; }
-        #photoPreviewSmall img { height: 80px; border-radius: 8px; border: 1px solid var(--border); }
-        .timeline-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
-        .timeline-entry { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 14px; position: relative; }
-        .timeline-entry::before { content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--gold), var(--terra)); border-radius: 3px 0 0 3px; }
-        .entry-date { font-size: 12px; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
-        .entry-note { font-size: 14px; color: #ccc; line-height: 1.6; margin-bottom: 10px; }
-        .entry-photo img { max-width: 100%; max-height: 200px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border); }
-        .no-entries { text-align: center; padding: 30px; color: var(--gray); font-size: 14px; }
+        /* CALENDAR & FERTILIZER */
+        .cal-main { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
+        .crop-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:14px; margin-bottom:30px; }
+        .crop-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; text-align:center; cursor:pointer; transition:all 0.3s; }
+        .crop-card:hover { border-color:var(--gold); transform:translateY(-2px); }
+        .crop-card.selected { border-color:var(--gold); background:rgba(245,166,35,0.05); }
+        .crop-card .c-emoji { font-size:36px; margin-bottom:8px; }
+        .crop-card h4 { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--white); }
+        .crop-card p { font-size:11px; color:var(--gray); margin-top:3px; }
+        .crop-detail { display:none; }
+        .crop-detail-header { background:linear-gradient(135deg,#1a1200,#1a0800); padding:24px; display:flex; align-items:center; gap:16px; border-radius:20px 20px 0 0; }
+        .crop-detail-emoji { font-size:48px; }
+        .crop-detail-header h2 { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; }
+        .crop-detail-header p { color:var(--gold); font-size:13px; }
+        .crop-detail-body { padding:24px; background:var(--card); border:1px solid var(--border); border-top:none; border-radius:0 0 20px 20px; }
+        .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+        .detail-box { background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:16px; }
+        .detail-box .d-label { font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+        .detail-box .d-value { font-size:14px; color:var(--white); font-weight:600; line-height:1.5; }
+        .months-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+        .month-badge { background:linear-gradient(135deg,var(--gold),var(--terra)); color:white; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600; }
+        .harvest-badge { background:linear-gradient(135deg,#1B5E20,#2E7D32); }
+        .scanner-badge { background:linear-gradient(135deg,#0D47A1,#1565C0); font-size:10px; padding:2px 8px; border-radius:8px; }
+        .tips-box { background:linear-gradient(135deg,rgba(76,175,80,0.08),rgba(151,188,98,0.05)); border:1px solid rgba(76,175,80,0.2); border-left:4px solid var(--lime); border-radius:12px; padding:16px; }
+        .tips-box h4 { font-family:'Syne',sans-serif; font-size:13px; color:var(--lime); margin-bottom:8px; }
+        .tips-box p { color:#ccc; font-size:14px; line-height:1.6; }
+        .back-btn { display:inline-block; margin-bottom:20px; padding:10px 20px; background:transparent; color:var(--gold); border:1px solid var(--gold); border-radius:10px; font-family:'Syne',sans-serif; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.3s; }
+        .back-btn:hover { background:rgba(245,166,35,0.08); }
+        .in-scanner { display:inline-block; background:rgba(21,101,192,0.15); border:1px solid rgba(21,101,192,0.3); color:#90CAF9; padding:4px 10px; border-radius:8px; font-size:11px; margin-top:6px; }
 
-        footer { border-top: 1px solid var(--border); text-align: center; padding: 30px 20px; color: var(--gray); font-size: 13px; }
-        footer strong { background: linear-gradient(90deg, var(--gold), var(--lime)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        @media (max-width: 768px) {
-            .journal-main { grid-template-columns: 1fr; }
-            .navbar { padding: 15px 20px; }
-        }
+        footer { border-top:1px solid var(--border); text-align:center; padding:30px 20px; color:var(--gray); font-size:13px; }
+        footer strong { background:linear-gradient(90deg,var(--gold),var(--lime)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        @media(max-width:768px) { .journal-main { grid-template-columns:1fr; } .navbar { padding:15px 20px; } .detail-grid { grid-template-columns:1fr; } .hero h2 { font-size:32px; } }
     </style>
 </head>
 <body>
 
-    <div class="kente"></div>
+<div class="kente"></div>
 
-    <div class="navbar">
-        <div class="nav-logo">
-            <div class="dot">🌱</div>
-            <div>
-                <h1>AgriXenova AI</h1>
-                <div class="nav-sub">by Quelova</div>
-            </div>
-        </div>
-        <div class="nav-links">
-            <button class="tab-btn active" onclick="showPage('scanner')">🔍 Scanner</button>
-            <button class="tab-btn outline" onclick="showPage('journal')">📷 Journal</button>
+<div class="navbar">
+    <div class="nav-logo">
+        <div class="dot">🌱</div>
+        <div>
+            <h1>AgriXenova AI</h1>
+            <div class="nav-sub">Intelligent Technology. Worldwide.</div>
         </div>
     </div>
+    <div class="nav-links">
+        <button class="tab-btn active" onclick="showPage('scanner',this)">🔍 Scanner</button>
+        <button class="tab-btn outline" onclick="showPage('journal',this)">📷 Journal</button>
+        <button class="tab-btn outline" onclick="showPage('calendar',this)">📅 Calendar</button>
+        <button class="tab-btn outline" onclick="showPage('fertilizer',this)">🧪 Fertilizer</button>
+    </div>
+</div>
 
-    <!-- ══ SCANNER PAGE ══════════════════════════════════════ -->
-    <div class="page active" id="page-scanner">
-        <div class="hero">
-            <div class="hero-badge">✦ AI-POWERED PLANT INTELLIGENCE</div>
-            <h2>Detect Any Plant<br><span>Disease Instantly</span></h2>
-            <p>Upload a photo of any crop, fruit, or plant — our AI identifies the disease and gives you expert treatment in seconds.</p>
-            <div class="hero-stats">
-                <div class="stat"><strong>38+</strong><span>Crop Types</span></div>
-                <div class="stat"><strong>1,200+</strong><span>Diseases</span></div>
-                <div class="stat"><strong>99%</strong><span>Accuracy</span></div>
-                <div class="stat"><strong>12</strong><span>Languages</span></div>
-            </div>
-        </div>
-
-        <div class="main">
-            <div class="upload-box" onclick="document.getElementById('fileInput').click()">
-                <span class="upload-icon">📸</span>
-                <h3>Upload a Plant or Crop Photo</h3>
-                <p>Take a photo of any leaf, fruit, or crop showing signs of disease</p>
-                <span class="supported">JPG · PNG · Any crop or plant · Any country</span>
-            </div>
-
-            <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
-
-            <div id="preview">
-                <img id="previewImg" src="" alt="Preview">
-                <p>📷 Image ready for scanning</p>
-            </div>
-
-            <button class="scan-btn" id="scanBtn" onclick="scanImage()">
-                🔍 &nbsp; Scan for Disease Now
-            </button>
-
-            <div id="loading">
-                <div class="spinner"></div>
-                <h4>Analysing your plant...</h4>
-                <p>AI is detecting diseases and preparing treatment advice</p>
-            </div>
-
-            <div id="result">
-                <div class="result-card">
-                    <div class="result-top">
-                        <div class="icon-circle">🌿</div>
-                        <div>
-                            <h3 id="diseaseName">Disease Name</h3>
-                            <p>AI Detection Result</p>
-                        </div>
-                        <div class="confidence-badge" id="confidenceScore">99%</div>
-                    </div>
-                    <div class="result-body">
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <div class="label">🌱 Crop / Plant</div>
-                                <div class="value" id="cropName">-</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="label">⚠️ Severity</div>
-                                <div class="value" id="severity">-</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="label">📍 Status</div>
-                                <div class="value" id="status">-</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="label">🔬 Confidence</div>
-                                <div class="value" id="confidenceText">-</div>
-                            </div>
-                        </div>
-                        <div class="treatment-box">
-                            <h4>💊 Treatment & Action Steps</h4>
-                            <p id="treatment">-</p>
-                        </div>
-                        <button class="scan-again" onclick="resetScan()">
-                            🔄 &nbsp; Scan Another Plant
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="features">
-                <div class="feat">
-                    <div class="f-icon">🌍</div>
-                    <h4>Global Coverage</h4>
-                    <p>Works for any crop in any country</p>
-                </div>
-                <div class="feat">
-                    <div class="f-icon">⚡</div>
-                    <h4>Instant Results</h4>
-                    <p>Diagnosis in under 3 seconds</p>
-                </div>
-                <div class="feat">
-                    <div class="f-icon">💊</div>
-                    <h4>Treatment Plans</h4>
-                    <p>Organic & chemical options</p>
-                </div>
-            </div>
+<!-- SCANNER -->
+<div class="page active" id="page-scanner">
+    <div class="hero">
+        <div class="hero-badge">✦ AI-POWERED PLANT INTELLIGENCE</div>
+        <h2>Detect Any Plant<br><span>Disease Instantly</span></h2>
+        <p>Upload a photo of any crop, fruit, or plant — our AI identifies the disease and gives you expert treatment in seconds.</p>
+        <div class="hero-stats">
+            <div class="stat"><strong>38+</strong><span>Crop Types</span></div>
+            <div class="stat"><strong>1,200+</strong><span>Diseases</span></div>
+            <div class="stat"><strong>99%</strong><span>Accuracy</span></div>
+            <div class="stat"><strong>12</strong><span>Languages</span></div>
         </div>
     </div>
-
-    <!-- ══ JOURNAL PAGE ══════════════════════════════════════ -->
-    <div class="page" id="page-journal">
-        <div class="journal-hero">
-            <div class="hero-badge">✦ PLANT GROWTH JOURNAL</div>
-            <h2>Track Your <span>Plant's Journey</span></h2>
-            <p>Add photos and notes weekly — watch your plants grow over time</p>
+    <div class="main">
+        <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+            <span class="upload-icon">📸</span>
+            <h3>Upload a Plant or Crop Photo</h3>
+            <p>Take a photo of any leaf, fruit, or crop showing signs of disease</p>
+            <span class="supported">JPG · PNG · Any crop or plant · Any country</span>
         </div>
-
-        <div class="journal-main">
-            <div class="left-panel">
-                <div class="add-plant-card">
-                    <h3>➕ Add New Plant</h3>
-                    <div class="input-group">
-                        <label>Plant Name</label>
-                        <input type="text" id="plantName" placeholder="e.g. My Rose Bush">
-                    </div>
-                    <div class="input-group">
-                        <label>Plant Type</label>
-                        <select id="plantType">
-                            <option value="">Select type...</option>
-                            <option value="🍅 Tomato">🍅 Tomato</option>
-                            <option value="🌽 Maize / Corn">🌽 Maize / Corn</option>
-                            <option value="🥔 Potato">🥔 Potato</option>
-                            <option value="🍎 Apple">🍎 Apple</option>
-                            <option value="🍇 Grape">🍇 Grape</option>
-                            <option value="🍓 Strawberry">🍓 Strawberry</option>
-                            <option value="🍑 Peach">🍑 Peach</option>
-                            <option value="🫑 Pepper">🫑 Pepper</option>
-                            <option value="🌸 Flower">🌸 Flower</option>
-                            <option value="🌿 Herb">🌿 Herb</option>
-                            <option value="🪴 Houseplant">🪴 Houseplant</option>
-                            <option value="🌱 Other">🌱 Other</option>
-                        </select>
-                    </div>
-                    <button class="add-btn" onclick="addPlant()">🌱 Add Plant</button>
+        <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
+        <div id="preview"><img id="previewImg" src="" alt="Preview"><p>📷 Image ready for scanning</p></div>
+        <button class="scan-btn" id="scanBtn" onclick="scanImage()">🔍 &nbsp; Scan for Disease Now</button>
+        <div id="loading"><div class="spinner"></div><h4>Analysing your plant...</h4><p>AI is detecting diseases and preparing treatment advice</p></div>
+        <div id="result">
+            <div class="result-card">
+                <div class="result-top">
+                    <div class="icon-circle">🌿</div>
+                    <div><h3 id="diseaseName">Disease Name</h3><p>AI Detection Result</p></div>
+                    <div class="confidence-badge" id="confidenceScore">99%</div>
                 </div>
-
-                <div class="plant-list-title">MY PLANTS</div>
-                <div id="plantList">
-                    <div style="padding:20px; text-align:center; color:var(--gray); font-size:13px;">
-                        No plants yet — add your first one! 🌱
+                <div class="result-body">
+                    <div class="info-grid">
+                        <div class="info-item"><div class="label">🌱 Crop / Plant</div><div class="value" id="cropName">-</div></div>
+                        <div class="info-item"><div class="label">⚠️ Severity</div><div class="value" id="severity">-</div></div>
+                        <div class="info-item"><div class="label">📍 Status</div><div class="value" id="status">-</div></div>
+                        <div class="info-item"><div class="label">🔬 Confidence</div><div class="value" id="confidenceText">-</div></div>
                     </div>
+                    <div class="treatment-box"><h4>💊 Treatment & Action Steps</h4><p id="treatment">-</p></div>
+                    <button class="scan-again" onclick="resetScan()">🔄 &nbsp; Scan Another Plant</button>
                 </div>
             </div>
+        </div>
+        <div class="features">
+            <div class="feat"><div class="f-icon">🌍</div><h4>Global Coverage</h4><p>Works for any crop in any country</p></div>
+            <div class="feat"><div class="f-icon">⚡</div><h4>Instant Results</h4><p>Diagnosis in under 3 seconds</p></div>
+            <div class="feat"><div class="f-icon">💊</div><h4>Treatment Plans</h4><p>Organic & chemical options</p></div>
+        </div>
+    </div>
+</div>
 
-            <div class="right-panel">
-                <div class="empty-state" id="emptyState">
-                    <div class="e-icon">🌿</div>
-                    <h3>Select a Plant</h3>
-                    <p>Choose a plant from the left or add a new one to start tracking its growth journey</p>
+<!-- JOURNAL -->
+<div class="page" id="page-journal">
+    <div class="page-hero">
+        <div class="hero-badge">✦ PLANT GROWTH JOURNAL</div>
+        <h2>Track Your <span>Plant's Journey</span></h2>
+        <p>Add photos and notes weekly — watch your plants grow over time</p>
+    </div>
+    <div class="journal-main">
+        <div class="left-panel">
+            <div class="add-plant-card">
+                <h3>➕ Add New Plant</h3>
+                <div class="input-group"><label>Plant Name</label><input type="text" id="plantName" placeholder="e.g. My Rose Bush"></div>
+                <div class="input-group">
+                    <label>Plant Type</label>
+                    <select id="plantType">
+                        <option value="">Select type...</option>
+                        <option value="🍅 Tomato">🍅 Tomato</option>
+                        <option value="🌽 Maize">🌽 Maize</option>
+                        <option value="🥔 Potato">🥔 Potato</option>
+                        <option value="🍎 Apple">🍎 Apple</option>
+                        <option value="🍇 Grape">🍇 Grape</option>
+                        <option value="🍓 Strawberry">🍓 Strawberry</option>
+                        <option value="🍑 Peach">🍑 Peach</option>
+                        <option value="🫑 Pepper">🫑 Pepper</option>
+                        <option value="🍒 Cherry">🍒 Cherry</option>
+                        <option value="🫐 Blueberry">🫐 Blueberry</option>
+                        <option value="🍊 Orange">🍊 Orange</option>
+                        <option value="🍉 Watermelon">🍉 Watermelon</option>
+                        <option value="🥭 Mango">🥭 Mango</option>
+                        <option value="🍌 Banana">🍌 Banana</option>
+                        <option value="🌾 Rice">🌾 Rice</option>
+                        <option value="🌾 Wheat">🌾 Wheat</option>
+                        <option value="☕ Coffee">☕ Coffee</option>
+                        <option value="🍵 Tea">🍵 Tea</option>
+                        <option value="🥜 Soybean">🥜 Soybean</option>
+                        <option value="🌸 Flower">🌸 Flower</option>
+                        <option value="🌿 Herb">🌿 Herb</option>
+                        <option value="🪴 Houseplant">🪴 Houseplant</option>
+                        <option value="🌱 Other">🌱 Other</option>
+                    </select>
                 </div>
-
-                <div id="plantDetail">
-                    <div class="detail-header">
-                        <div class="detail-emoji" id="detailEmoji">🌱</div>
-                        <div class="detail-info">
-                            <h2 id="detailName">Plant Name</h2>
-                            <p id="detailMeta">Type · Added date</p>
-                        </div>
-                    </div>
-
-                    <div class="add-entry-card">
-                        <h3>📝 Add Journal Entry</h3>
-                        <textarea class="entry-textarea" id="entryNote"
-                            placeholder="How is your plant doing today?"></textarea>
-                        <div id="photoPreviewSmall">
-                            <img id="previewSmallImg" src="" alt="">
-                        </div>
-                        <div class="entry-actions">
-                            <button class="photo-upload-btn" onclick="document.getElementById('entryPhotoInput').click()">
-                                📸 Add Photo
-                            </button>
-                            <input type="file" id="entryPhotoInput" accept="image/*" onchange="previewEntryPhoto(event)">
-                            <button class="save-entry-btn" onclick="saveEntry()">💾 Save Entry</button>
-                        </div>
-                    </div>
-
-                    <div class="timeline-title">GROWTH TIMELINE</div>
-                    <div id="timeline">
-                        <div class="no-entries">No entries yet — add your first journal entry above! 📷</div>
+                <button class="add-btn" onclick="addPlant()">🌱 Add Plant</button>
+            </div>
+            <div class="plant-list-title">MY PLANTS</div>
+            <div id="plantList"><div style="padding:20px;text-align:center;color:var(--gray);font-size:13px;">No plants yet — add your first one! 🌱</div></div>
+        </div>
+        <div class="right-panel">
+            <div class="empty-state" id="emptyState">
+                <div class="e-icon">🌿</div>
+                <h3>Select a Plant</h3>
+                <p>Choose a plant from the left or add a new one to start tracking its growth journey</p>
+            </div>
+            <div id="plantDetail">
+                <div class="detail-header">
+                    <div class="detail-emoji" id="detailEmoji">🌱</div>
+                    <div class="detail-info"><h2 id="detailName">Plant Name</h2><p id="detailMeta">Type · Added date</p></div>
+                </div>
+                <div class="add-entry-card">
+                    <h3>📝 Add Journal Entry</h3>
+                    <textarea class="entry-textarea" id="entryNote" placeholder="How is your plant doing today?"></textarea>
+                    <div id="photoPreviewSmall"><img id="previewSmallImg" src="" alt=""></div>
+                    <div class="entry-actions">
+                        <button class="photo-upload-btn" onclick="document.getElementById('entryPhotoInput').click()">📸 Add Photo</button>
+                        <input type="file" id="entryPhotoInput" accept="image/*" onchange="previewEntryPhoto(event)">
+                        <button class="save-entry-btn" onclick="saveEntry()">💾 Save Entry</button>
                     </div>
                 </div>
+                <div class="timeline-title">GROWTH TIMELINE</div>
+                <div id="timeline"><div class="no-entries">No entries yet — add your first journal entry above! 📷</div></div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="kente"></div>
-
-    <footer>
-        <p>Powered by <strong>AgriXenova AI</strong> · Quelova</p>
-        <p style="margin-top:6px;">Intelligent Technology. Worldwide. 🌍</p>
-    </footer>
-
-    <script>
-        // ── Tab switching
-        function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active');
-                b.classList.add('outline');
-            });
-            document.getElementById('page-' + page).classList.add('active');
-            event.target.classList.add('active');
-            event.target.classList.remove('outline');
-            if (page === 'journal') loadPlants();
-        }
-
-        // ── Scanner
-        function previewImage(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('previewImg').src = e.target.result;
-                document.getElementById('preview').style.display = 'block';
-                document.getElementById('scanBtn').style.display = 'block';
-                document.getElementById('result').style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function scanImage() {
-            const fileInput = document.getElementById('fileInput');
-            if (!fileInput.files[0]) return;
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('scanBtn').style.display = 'none';
-            document.getElementById('result').style.display = 'none';
-            const formData = new FormData();
-            formData.append('image', fileInput.files[0]);
-            fetch('/predict', { method: 'POST', body: formData })
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('result').style.display = 'block';
-                document.getElementById('diseaseName').textContent = data.disease || 'Unknown';
-                document.getElementById('confidenceScore').textContent = data.confidence || '-%';
-                document.getElementById('confidenceText').textContent = data.confidence || '-';
-                document.getElementById('cropName').textContent = data.crop || '-';
-                document.getElementById('severity').textContent = data.severity || '-';
-                document.getElementById('status').textContent = data.status || '-';
-                document.getElementById('treatment').textContent = data.treatment || '-';
-            })
-            .catch(() => {
-                document.getElementById('loading').style.display = 'none';
-                alert('Error scanning image. Please try again.');
-            });
-        }
-
-        function resetScan() {
-            document.getElementById('fileInput').value = '';
-            document.getElementById('preview').style.display = 'none';
-            document.getElementById('scanBtn').style.display = 'none';
-            document.getElementById('result').style.display = 'none';
-        }
-
-        // ── Journal
-        let selectedPlantId = null;
-
-        async function addPlant() {
-            const name = document.getElementById('plantName').value.trim();
-            const type = document.getElementById('plantType').value;
-            if (!name) { alert('Please enter a plant name!'); return; }
-            const res = await fetch('/api/plants', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({name, type})
-            });
-            const plant = await res.json();
-            document.getElementById('plantName').value = '';
-            document.getElementById('plantType').value = '';
-            loadPlants();
-            selectPlant(plant.id, plant.name, plant.type, plant.date_added);
-        }
-
-        async function loadPlants() {
-            const res = await fetch('/api/plants');
-            const plants = await res.json();
-            const list = document.getElementById('plantList');
-            if (plants.length === 0) {
-                list.innerHTML = '<div style="padding:20px; text-align:center; color:var(--gray); font-size:13px;">No plants yet! 🌱</div>';
-                return;
-            }
-            list.innerHTML = plants.map(p => `
-                <div class="plant-item ${p.id === selectedPlantId ? 'active' : ''}"
-                     onclick="selectPlant(${p.id}, '${p.name}', '${p.type}', '${p.date_added}')">
-                    <div class="plant-emoji">${getEmoji(p.type)}</div>
-                    <div class="plant-info">
-                        <h4>${p.name}</h4>
-                        <p>${p.type || 'Plant'} · ${p.entry_count} entries</p>
-                    </div>
-                    <button class="delete-btn" onclick="deletePlant(event, ${p.id})">🗑</button>
+<!-- CALENDAR -->
+<div class="page" id="page-calendar">
+    <div class="page-hero">
+        <div class="hero-badge">✦ SMART HARVEST CALENDAR</div>
+        <h2>When to Plant &amp; <span>When to Harvest</span></h2>
+        <p>Select your crop — get exact planting dates, harvest times and care schedule for any country</p>
+    </div>
+    <div class="cal-main">
+        <div class="crop-grid" id="cropGrid"></div>
+        <div class="crop-detail" id="cropDetail">
+            <button class="back-btn" onclick="showCropGrid()">← Back to All Crops</button>
+            <div class="crop-detail-header">
+                <div class="crop-detail-emoji" id="detailCropEmoji">🌱</div>
+                <div><h2 id="detailCropName">Crop</h2><p id="detailCropDays">-</p></div>
+            </div>
+            <div class="crop-detail-body">
+                <div id="scannerNote" style="margin-bottom:16px;"></div>
+                <div class="detail-grid">
+                    <div class="detail-box"><div class="d-label">🌱 Planting Months</div><div class="months-row" id="plantingMonths"></div></div>
+                    <div class="detail-box"><div class="d-label">🌾 Harvest Months</div><div class="months-row" id="harvestMonths"></div></div>
+                    <div class="detail-box"><div class="d-label">💧 Watering</div><div class="d-value" id="detailWater">-</div></div>
+                    <div class="detail-box"><div class="d-label">☀️ Sunlight</div><div class="d-value" id="detailSun">-</div></div>
+                    <div class="detail-box" style="grid-column:1/-1"><div class="d-label">🪱 Best Soil</div><div class="d-value" id="detailSoil">-</div></div>
                 </div>
-            `).join('');
-        }
+                <div class="tips-box"><h4>💡 Expert Farming Tips</h4><p id="detailTips">-</p></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        function selectPlant(id, name, type, dateAdded) {
-            selectedPlantId = id;
-            document.getElementById('emptyState').style.display = 'none';
-            document.getElementById('plantDetail').style.display = 'block';
-            document.getElementById('detailEmoji').textContent = getEmoji(type);
-            document.getElementById('detailName').textContent = name;
-            document.getElementById('detailMeta').textContent = `${type || 'Plant'} · Added ${dateAdded}`;
-            loadEntries(id);
-            loadPlants();
-        }
-
-        function getEmoji(type) {
-            if (!type) return '🌱';
-            return type.split(' ')[0] || '🌱';
-        }
-
-        function previewEntryPhoto(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('previewSmallImg').src = e.target.result;
-                document.getElementById('photoPreviewSmall').style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        }
-
-        async function saveEntry() {
-            if (!selectedPlantId) return;
-            const note = document.getElementById('entryNote').value.trim();
-            const photoInput = document.getElementById('entryPhotoInput');
-            if (!note && !photoInput.files[0]) { alert('Please add a note or photo!'); return; }
-            const formData = new FormData();
-            formData.append('note', note);
-            if (photoInput.files[0]) formData.append('photo', photoInput.files[0]);
-            await fetch(`/api/plants/${selectedPlantId}/entries`, { method: 'POST', body: formData });
-            document.getElementById('entryNote').value = '';
-            document.getElementById('entryPhotoInput').value = '';
-            document.getElementById('photoPreviewSmall').style.display = 'none';
-            loadEntries(selectedPlantId);
-            loadPlants();
-        }
-
-        async function loadEntries(plantId) {
-            const res = await fetch(`/api/plants/${plantId}/entries`);
-            const entries = await res.json();
-            const timeline = document.getElementById('timeline');
-            if (entries.length === 0) {
-                timeline.innerHTML = '<div class="no-entries">No entries yet — add your first one! 📷</div>';
-                return;
-            }
-            timeline.innerHTML = entries.map(e => `
-                <div class="timeline-entry">
-                    <div class="entry-date">📅 ${e.date}</div>
-                    ${e.note ? `<div class="entry-note">${e.note}</div>` : ''}
-                    ${e.photo ? `<div class="entry-photo"><img src="${e.photo}" alt="Plant photo"></div>` : ''}
+<!-- FERTILIZER -->
+<div class="page" id="page-fertilizer">
+    <div class="page-hero">
+        <div class="hero-badge">✦ FERTILIZER & TREATMENT GUIDE</div>
+        <h2>Feed Your Crops <span>The Right Way</span></h2>
+        <p>Select your crop — get exact fertilizer recommendations and treatment plans</p>
+    </div>
+    <div class="cal-main">
+        <div class="crop-grid" id="fertGrid"></div>
+        <div class="crop-detail" id="fertDetail">
+            <button class="back-btn" onclick="showFertGrid()">← Back to All Crops</button>
+            <div class="crop-detail-header">
+                <div class="crop-detail-emoji" id="fertCropEmoji">🌱</div>
+                <div><h2 id="fertCropName">Crop</h2><p style="color:var(--gold);">Fertilizer & Treatment Guide</p></div>
+            </div>
+            <div class="crop-detail-body">
+                <div class="detail-grid">
+                    <div class="detail-box" style="grid-column:1/-1"><div class="d-label">🧪 Recommended Fertilizer</div><div class="d-value" id="fertRecommend">-</div></div>
+                    <div class="detail-box"><div class="d-label">💧 Watering Schedule</div><div class="d-value" id="fertWater">-</div></div>
+                    <div class="detail-box"><div class="d-label">☀️ Sunlight Needed</div><div class="d-value" id="fertSun">-</div></div>
+                    <div class="detail-box" style="grid-column:1/-1"><div class="d-label">🪱 Best Soil Type</div><div class="d-value" id="fertSoil">-</div></div>
                 </div>
-            `).join('');
-        }
+                <div class="tips-box"><h4>💡 Expert Tips</h4><p id="fertTips">-</p></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        async function deletePlant(event, id) {
-            event.stopPropagation();
-            if (!confirm('Delete this plant and all its entries?')) return;
-            await fetch(`/api/plants/${id}`, { method: 'DELETE' });
-            if (selectedPlantId === id) {
-                selectedPlantId = null;
-                document.getElementById('emptyState').style.display = 'block';
-                document.getElementById('plantDetail').style.display = 'none';
-            }
-            loadPlants();
-        }
-    </script>
+<div class="kente"></div>
+<footer>
+    <p>Powered by <strong>AgriXenova AI</strong></p>
+    <p style="margin-top:6px;">Intelligent Technology. Worldwide. 🌍</p>
+</footer>
 
+<script>
+// ── Tab switching
+function showPage(page, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('outline'); });
+    document.getElementById('page-' + page).classList.add('active');
+    btn.classList.add('active'); btn.classList.remove('outline');
+    if (page === 'journal') loadPlants();
+    if (page === 'calendar') renderCropGrid();
+    if (page === 'fertilizer') renderFertGrid();
+}
+
+// ── ALL CROPS DATA
+const CROPS = {
+    // ✅ IN PLANTVILLAGE SCANNER
+    "Tomato":     { emoji:"🍅", inScanner:true, planting:["March","April","September","October"], harvest:["June","July","December","January"], days:"60-80 days", water:"2-3 times per week", sun:"6-8 hours daily", soil:"Well-drained, slightly acidic (pH 6.0-6.8)", fertilizer:"NPK 10-10-10 at planting, high potassium when fruiting", tips:"Stake plants when 30cm tall. Remove suckers for bigger fruits. Watch for blight in wet seasons." },
+    "Potato":     { emoji:"🥔", inScanner:true, planting:["February","March","August","September"], harvest:["May","June","November","December"], days:"70-120 days", water:"1-2 times per week", sun:"6 hours daily", soil:"Loose, well-drained (pH 5.0-6.0)", fertilizer:"High phosphorus at planting, reduce nitrogen after flowering", tips:"Hill soil around stems as plant grows. Harvest when leaves turn yellow." },
+    "Maize":      { emoji:"🌽", inScanner:true, planting:["March","April","October","November"], harvest:["July","August","January","February"], days:"90-120 days", water:"2 times per week", sun:"8 hours daily", soil:"Rich, well-drained (pH 5.8-7.0)", fertilizer:"High nitrogen — apply urea at knee height stage", tips:"Plant in blocks not rows for better pollination. Watch for fall armyworm." },
+    "Apple":      { emoji:"🍎", inScanner:true, planting:["November","December","January"], harvest:["August","September","October"], days:"150-180 days", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Balanced NPK in spring, potassium before fruiting", tips:"Thin fruits to one per cluster for larger apples. Prune in winter." },
+    "Grape":      { emoji:"🍇", inScanner:true, planting:["November","December","February"], harvest:["August","September","October"], days:"150-180 days", water:"2 times per week", sun:"7-8 hours daily", soil:"Well-drained sandy loam (pH 6.0-6.5)", fertilizer:"Low nitrogen, high potassium and phosphorus", tips:"Prune heavily in winter. Train vines on trellis for good air circulation." },
+    "Strawberry": { emoji:"🍓", inScanner:true, planting:["August","September","October"], harvest:["November","December","January"], days:"60-90 days", water:"3 times per week", sun:"6-8 hours daily", soil:"Sandy loam, slightly acidic (pH 5.5-6.5)", fertilizer:"High phosphorus at planting, balanced NPK during fruiting", tips:"Mulch around plants to keep berries clean and retain moisture." },
+    "Peach":      { emoji:"🍑", inScanner:true, planting:["November","December","January"], harvest:["June","July","August"], days:"120-150 days", water:"2 times per week", sun:"8 hours daily", soil:"Sandy loam, well-drained (pH 6.0-6.5)", fertilizer:"Balanced NPK in spring before bud break", tips:"Thin fruits to 15-20cm apart for larger peaches. Net against birds." },
+    "Pepper":     { emoji:"🫑", inScanner:true, planting:["March","April","September"], harvest:["June","July","December"], days:"70-90 days", water:"2-3 times per week", sun:"6-8 hours daily", soil:"Rich, well-drained (pH 6.0-6.8)", fertilizer:"High nitrogen early, switch to high potassium when flowering", tips:"Pinch first flowers to encourage bushier plant and more fruits." },
+    "Cherry":     { emoji:"🍒", inScanner:true, planting:["November","December","January"], harvest:["May","June","July"], days:"70-90 days from bloom", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Balanced NPK in early spring, low nitrogen after fruit set", tips:"Net trees before harvest to protect from birds. Avoid overhead irrigation." },
+    "Blueberry":  { emoji:"🫐", inScanner:true, planting:["October","November","February"], harvest:["June","July","August"], days:"60-90 days from bloom", water:"2 times per week", sun:"6-8 hours daily", soil:"Acidic, well-drained (pH 4.5-5.5)", fertilizer:"Ammonium sulfate — avoid lime. No phosphorus needed", tips:"Plant 2+ varieties for cross-pollination. Mulch heavily with pine bark." },
+    "Orange":     { emoji:"🍊", inScanner:true, planting:["September","October","November"], harvest:["December","January","February","March"], days:"8-12 months from bloom", water:"2 times per week", sun:"8 hours daily", soil:"Well-drained sandy loam (pH 6.0-7.5)", fertilizer:"Citrus-specific NPK with micronutrients — apply 3x per year", tips:"Do not overwater — causes root rot. Harvest when skin turns orange." },
+    "Soybean":    { emoji:"🥜", inScanner:true, planting:["April","May","June"], harvest:["September","October","November"], days:"75-120 days", water:"Once per week", sun:"6-8 hours daily", soil:"Well-drained loam (pH 6.0-7.0)", fertilizer:"Low nitrogen — soybeans fix their own nitrogen. High phosphorus and potassium", tips:"Inoculate seeds with rhizobium bacteria for best nitrogen fixation." },
+    "Squash":     { emoji:"🎃", inScanner:true, planting:["March","April","August","September"], harvest:["June","July","November","December"], days:"50-65 days", water:"2 times per week", sun:"6-8 hours daily", soil:"Rich, well-drained (pH 6.0-6.5)", fertilizer:"High nitrogen early, switch to phosphorus and potassium when flowering", tips:"Hand-pollinate flowers in early morning for better fruit set." },
+    "Raspberry":  { emoji:"🍓", inScanner:true, planting:["November","December","February"], harvest:["June","July","August"], days:"60-70 days from bloom", water:"2 times per week", sun:"6-8 hours daily", soil:"Well-drained, slightly acidic (pH 5.5-6.5)", fertilizer:"Balanced NPK in spring, avoid high nitrogen in summer", tips:"Prune old canes after harvest. Stake canes to prevent wind damage." },
+
+    // ❌ NOT IN SCANNER — Calendar + Fertilizer only
+    "Watermelon": { emoji:"🍉", inScanner:false, planting:["February","March","August"], harvest:["May","June","November"], days:"80-90 days", water:"2 times per week", sun:"8 hours daily", soil:"Sandy loam, well-drained (pH 6.0-6.8)", fertilizer:"High nitrogen early, high potassium when vines run", tips:"Thump fruit — hollow sound means ripe. Underside turns yellow when ready." },
+    "Mango":      { emoji:"🥭", inScanner:false, planting:["October","November"], harvest:["November","December","January","February"], days:"100-150 days after flowering", water:"Once per week", sun:"8 hours daily", soil:"Deep, well-drained (pH 5.5-7.5)", fertilizer:"High potassium and phosphorus before flowering season", tips:"Do not water during flowering — it causes flower drop." },
+    "Banana":     { emoji:"🍌", inScanner:false, planting:["Any month"], harvest:["9-12 months after planting"], days:"270-365 days", water:"3 times per week", sun:"8 hours daily", soil:"Rich, well-drained loam (pH 5.5-7.0)", fertilizer:"High potassium — apply every 2 months", tips:"Remove extra suckers, keep only 1-2 per plant for best yield." },
+    "Rice":       { emoji:"🌾", inScanner:false, planting:["March","April","September","October"], harvest:["July","August","January","February"], days:"105-150 days", water:"Keep flooded 5cm until 2 weeks before harvest", sun:"8 hours daily", soil:"Clay or clay loam that retains water (pH 5.5-6.5)", fertilizer:"High nitrogen in 3 splits — basal, tillering, panicle initiation", tips:"Drain field 2 weeks before harvest for easier harvesting." },
+    "Wheat":      { emoji:"🌾", inScanner:false, planting:["October","November","December"], harvest:["March","April","May"], days:"110-130 days", water:"3-4 irrigations total", sun:"7 hours daily", soil:"Well-drained loam or clay loam (pH 6.0-7.5)", fertilizer:"High nitrogen in 2 splits — at planting and at tillering", tips:"Apply fungicide at flag leaf stage to prevent rust diseases." },
+    "Coffee":     { emoji:"☕", inScanner:false, planting:["March","April","September"], harvest:["October","November","December"], days:"3-4 years first harvest", water:"2 times per week", sun:"4-6 hours — prefers partial shade", soil:"Well-drained, slightly acidic (pH 6.0-6.5)", fertilizer:"NPK with sulfur — apply 3x per year after rains", tips:"Pick only bright red cherries. Dry process or wet process immediately after harvest." },
+    "Tea":        { emoji:"🍵", inScanner:false, planting:["April","May","September","October"], harvest:["Year-round after 3 years"], days:"3 years first harvest", water:"Needs high rainfall — 1500mm per year", sun:"5-6 hours daily, partial shade", soil:"Well-drained, strongly acidic (pH 4.5-5.5)", fertilizer:"High nitrogen — apply every 3 months. Avoid phosphorus excess", tips:"Pluck only the top 2 leaves and bud for highest quality tea." }
+};
+
+// ── Render grids
+function renderCropGrid() {
+    const grid = document.getElementById('cropGrid');
+    grid.innerHTML = Object.entries(CROPS).map(([name, d]) => `
+        <div class="crop-card" onclick="showCropDetail('${name}')">
+            <div class="c-emoji">${d.emoji}</div>
+            <h4>${name}</h4>
+            <p>${d.days}</p>
+            ${d.inScanner ? '<span style="font-size:10px;color:#90CAF9;">✅ In Scanner</span>' : '<span style="font-size:10px;color:var(--gray);">📅 Calendar only</span>'}
+        </div>
+    `).join('');
+    document.getElementById('cropGrid').style.display = 'grid';
+    document.getElementById('cropDetail').style.display = 'none';
+}
+
+function renderFertGrid() {
+    const grid = document.getElementById('fertGrid');
+    grid.innerHTML = Object.entries(CROPS).map(([name, d]) => `
+        <div class="crop-card" onclick="showFertDetail('${name}')">
+            <div class="c-emoji">${d.emoji}</div>
+            <h4>${name}</h4>
+            <p>${d.days}</p>
+        </div>
+    `).join('');
+    document.getElementById('fertGrid').style.display = 'grid';
+    document.getElementById('fertDetail').style.display = 'none';
+}
+
+function showCropDetail(name) {
+    const c = CROPS[name];
+    document.getElementById('cropGrid').style.display = 'none';
+    document.getElementById('cropDetail').style.display = 'block';
+    document.getElementById('detailCropEmoji').textContent = c.emoji;
+    document.getElementById('detailCropName').textContent = name;
+    document.getElementById('detailCropDays').textContent = c.days;
+    document.getElementById('plantingMonths').innerHTML = c.planting.map(m=>`<span class="month-badge">${m}</span>`).join('');
+    document.getElementById('harvestMonths').innerHTML = c.harvest.map(m=>`<span class="month-badge harvest-badge">${m}</span>`).join('');
+    document.getElementById('detailWater').textContent = c.water;
+    document.getElementById('detailSun').textContent = c.sun;
+    document.getElementById('detailSoil').textContent = c.soil;
+    document.getElementById('detailTips').textContent = c.tips;
+    document.getElementById('scannerNote').innerHTML = c.inScanner
+        ? '<span class="in-scanner">✅ This crop is supported in the AI Disease Scanner</span>'
+        : '<span class="in-scanner" style="color:#FFCC80;border-color:rgba(255,204,128,0.3);background:rgba(255,204,128,0.1);">📅 Calendar only — not yet in AI Scanner</span>';
+}
+
+function showFertDetail(name) {
+    const c = CROPS[name];
+    document.getElementById('fertGrid').style.display = 'none';
+    document.getElementById('fertDetail').style.display = 'block';
+    document.getElementById('fertCropEmoji').textContent = c.emoji;
+    document.getElementById('fertCropName').textContent = name;
+    document.getElementById('fertRecommend').textContent = c.fertilizer;
+    document.getElementById('fertWater').textContent = c.water;
+    document.getElementById('fertSun').textContent = c.sun;
+    document.getElementById('fertSoil').textContent = c.soil;
+    document.getElementById('fertTips').textContent = c.tips;
+}
+
+function showCropGrid() { document.getElementById('cropGrid').style.display='grid'; document.getElementById('cropDetail').style.display='none'; }
+function showFertGrid() { document.getElementById('fertGrid').style.display='grid'; document.getElementById('fertDetail').style.display='none'; }
+
+// ── Scanner
+function previewImage(event) {
+    const file = event.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = e => { document.getElementById('previewImg').src=e.target.result; document.getElementById('preview').style.display='block'; document.getElementById('scanBtn').style.display='block'; document.getElementById('result').style.display='none'; };
+    reader.readAsDataURL(file);
+}
+function scanImage() {
+    const fi = document.getElementById('fileInput'); if(!fi.files[0]) return;
+    document.getElementById('loading').style.display='block'; document.getElementById('scanBtn').style.display='none'; document.getElementById('result').style.display='none';
+    const fd = new FormData(); fd.append('image', fi.files[0]);
+    fetch('/predict',{method:'POST',body:fd}).then(r=>r.json()).then(d=>{
+        document.getElementById('loading').style.display='none'; document.getElementById('result').style.display='block';
+        document.getElementById('diseaseName').textContent=d.disease||'Unknown';
+        document.getElementById('confidenceScore').textContent=d.confidence||'-%';
+        document.getElementById('confidenceText').textContent=d.confidence||'-';
+        document.getElementById('cropName').textContent=d.crop||'-';
+        document.getElementById('severity').textContent=d.severity||'-';
+        document.getElementById('status').textContent=d.status||'-';
+        document.getElementById('treatment').textContent=d.treatment||'-';
+    }).catch(()=>{ document.getElementById('loading').style.display='none'; alert('Error scanning. Try again.'); });
+}
+function resetScan() {
+    document.getElementById('fileInput').value=''; document.getElementById('preview').style.display='none';
+    document.getElementById('scanBtn').style.display='none'; document.getElementById('result').style.display='none';
+}
+
+// ── Journal
+let selectedPlantId = null;
+async function addPlant() {
+    const name=document.getElementById('plantName').value.trim(), type=document.getElementById('plantType').value;
+    if(!name){alert('Please enter a plant name!');return;}
+    const res=await fetch('/api/plants',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,type})});
+    const plant=await res.json();
+    document.getElementById('plantName').value=''; document.getElementById('plantType').value='';
+    loadPlants(); selectPlant(plant.id,plant.name,plant.type,plant.date_added);
+}
+async function loadPlants() {
+    const res=await fetch('/api/plants'), plants=await res.json(), list=document.getElementById('plantList');
+    if(!plants.length){list.innerHTML='<div style="padding:20px;text-align:center;color:var(--gray);font-size:13px;">No plants yet! 🌱</div>';return;}
+    list.innerHTML=plants.map(p=>`
+        <div class="plant-item ${p.id===selectedPlantId?'active':''}" onclick="selectPlant(${p.id},'${p.name}','${p.type}','${p.date_added}')">
+            <div class="plant-emoji">${getEmoji(p.type)}</div>
+            <div class="plant-info"><h4>${p.name}</h4><p>${p.type||'Plant'} · ${p.entry_count} entries</p></div>
+            <button class="delete-btn" onclick="deletePlant(event,${p.id})">🗑</button>
+        </div>`).join('');
+}
+function selectPlant(id,name,type,dateAdded) {
+    selectedPlantId=id;
+    document.getElementById('emptyState').style.display='none'; document.getElementById('plantDetail').style.display='block';
+    document.getElementById('detailEmoji').textContent=getEmoji(type);
+    document.getElementById('detailName').textContent=name;
+    document.getElementById('detailMeta').textContent=`${type||'Plant'} · Added ${dateAdded}`;
+    loadEntries(id); loadPlants();
+}
+function getEmoji(type){if(!type)return'🌱';return type.split(' ')[0]||'🌱';}
+function previewEntryPhoto(event) {
+    const file=event.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=e=>{document.getElementById('previewSmallImg').src=e.target.result;document.getElementById('photoPreviewSmall').style.display='block';};
+    reader.readAsDataURL(file);
+}
+async function saveEntry() {
+    if(!selectedPlantId)return;
+    const note=document.getElementById('entryNote').value.trim(), photoInput=document.getElementById('entryPhotoInput');
+    if(!note&&!photoInput.files[0]){alert('Please add a note or photo!');return;}
+    const fd=new FormData(); fd.append('note',note);
+    if(photoInput.files[0])fd.append('photo',photoInput.files[0]);
+    await fetch(`/api/plants/${selectedPlantId}/entries`,{method:'POST',body:fd});
+    document.getElementById('entryNote').value=''; document.getElementById('entryPhotoInput').value='';
+    document.getElementById('photoPreviewSmall').style.display='none';
+    loadEntries(selectedPlantId); loadPlants();
+}
+async function loadEntries(plantId) {
+    const res=await fetch(`/api/plants/${plantId}/entries`), entries=await res.json(), timeline=document.getElementById('timeline');
+    if(!entries.length){timeline.innerHTML='<div class="no-entries">No entries yet — add your first one! 📷</div>';return;}
+    timeline.innerHTML=entries.map(e=>`
+        <div class="timeline-entry">
+            <div class="entry-date">📅 ${e.date}</div>
+            ${e.note?`<div class="entry-note">${e.note}</div>`:''}
+            ${e.photo?`<div class="entry-photo"><img src="${e.photo}" alt="Plant photo"></div>`:''}
+        </div>`).join('');
+}
+async function deletePlant(event,id) {
+    event.stopPropagation();
+    if(!confirm('Delete this plant and all its entries?'))return;
+    await fetch(`/api/plants/${id}`,{method:'DELETE'});
+    if(selectedPlantId===id){selectedPlantId=null;document.getElementById('emptyState').style.display='block';document.getElementById('plantDetail').style.display='none';}
+    loadPlants();
+}
+</script>
 </body>
 </html>
+
+
+
 
 
 

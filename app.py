@@ -174,6 +174,170 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# ── Crop Calendar Data ─────────────────────────────────────
+CROP_DATA = {
+    "Tomato": {
+        "emoji": "🍅",
+        "planting_months": ["March", "April", "September", "October"],
+        "harvest_months": ["June", "July", "December", "January"],
+        "days_to_harvest": "60-80 days",
+        "water": "2-3 times per week",
+        "sunlight": "6-8 hours daily",
+        "soil": "Well-drained, slightly acidic (pH 6.0-6.8)",
+        "fertilizer": "NPK 10-10-10 at planting, then high potassium when fruiting",
+        "tips": "Stake plants when 30cm tall. Remove suckers for bigger fruits."
+    },
+    "Potato": {
+        "emoji": "🥔",
+        "planting_months": ["February", "March", "August", "September"],
+        "harvest_months": ["May", "June", "November", "December"],
+        "days_to_harvest": "70-120 days",
+        "water": "1-2 times per week",
+        "sunlight": "6 hours daily",
+        "soil": "Loose, well-drained (pH 5.0-6.0)",
+        "fertilizer": "High phosphorus at planting, reduce nitrogen after flowering",
+        "tips": "Hill soil around stems as plant grows. Harvest when leaves turn yellow."
+    },
+    "Maize": {
+        "emoji": "🌽",
+        "planting_months": ["March", "April", "October", "November"],
+        "harvest_months": ["July", "August", "January", "February"],
+        "days_to_harvest": "90-120 days",
+        "water": "2 times per week",
+        "sunlight": "8 hours daily",
+        "soil": "Rich, well-drained (pH 5.8-7.0)",
+        "fertilizer": "High nitrogen — apply urea at knee height stage",
+        "tips": "Plant in blocks not rows for better pollination. Watch for fall armyworm."
+    },
+    "Apple": {
+        "emoji": "🍎",
+        "planting_months": ["November", "December", "January"],
+        "harvest_months": ["August", "September", "October"],
+        "days_to_harvest": "150-180 days",
+        "water": "2 times per week",
+        "sunlight": "8 hours daily",
+        "soil": "Well-drained loam (pH 6.0-7.0)",
+        "fertilizer": "Balanced NPK in spring, potassium before fruiting",
+        "tips": "Thin fruits to one per cluster for larger apples. Prune in winter."
+    },
+    "Grape": {
+        "emoji": "🍇",
+        "planting_months": ["November", "December", "February"],
+        "harvest_months": ["August", "September", "October"],
+        "days_to_harvest": "150-180 days",
+        "water": "2 times per week",
+        "sunlight": "7-8 hours daily",
+        "soil": "Well-drained sandy loam (pH 6.0-6.5)",
+        "fertilizer": "Low nitrogen, high potassium and phosphorus",
+        "tips": "Prune heavily in winter. Train vines on trellis for air circulation."
+    },
+    "Strawberry": {
+        "emoji": "🍓",
+        "planting_months": ["August", "September", "October"],
+        "harvest_months": ["November", "December", "January"],
+        "days_to_harvest": "60-90 days",
+        "water": "3 times per week",
+        "sunlight": "6-8 hours daily",
+        "soil": "Sandy loam, slightly acidic (pH 5.5-6.5)",
+        "fertilizer": "High phosphorus at planting, balanced NPK during fruiting",
+        "tips": "Mulch around plants to keep berries clean and retain moisture."
+    },
+    "Peach": {
+        "emoji": "🍑",
+        "planting_months": ["November", "December", "January"],
+        "harvest_months": ["June", "July", "August"],
+        "days_to_harvest": "120-150 days",
+        "water": "2 times per week",
+        "sunlight": "8 hours daily",
+        "soil": "Sandy loam, well-drained (pH 6.0-6.5)",
+        "fertilizer": "Balanced NPK in spring before bud break",
+        "tips": "Thin fruits to 15-20cm apart for larger peaches. Net against birds."
+    },
+    "Pepper": {
+        "emoji": "🫑",
+        "planting_months": ["March", "April", "September"],
+        "harvest_months": ["June", "July", "December"],
+        "days_to_harvest": "70-90 days",
+        "water": "2-3 times per week",
+        "sunlight": "6-8 hours daily",
+        "soil": "Rich, well-drained (pH 6.0-6.8)",
+        "fertilizer": "High nitrogen early, switch to high potassium when flowering",
+        "tips": "Pinch first flowers to encourage bushier plant and more fruits."
+    },
+    "Watermelon": {
+        "emoji": "🍉",
+        "planting_months": ["February", "March", "August"],
+        "harvest_months": ["May", "June", "November"],
+        "days_to_harvest": "80-90 days",
+        "water": "2 times per week",
+        "sunlight": "8 hours daily",
+        "soil": "Sandy loam, well-drained (pH 6.0-6.8)",
+        "fertilizer": "High nitrogen early, high potassium when vines run",
+        "tips": "Thump fruit — hollow sound means ripe. Check underside turns yellow."
+    },
+    "Mango": {
+        "emoji": "🥭",
+        "planting_months": ["October", "November"],
+        "harvest_months": ["November", "December", "January", "February"],
+        "days_to_harvest": "100-150 days after flowering",
+        "water": "Once per week",
+        "sunlight": "8 hours daily",
+        "soil": "Deep, well-drained (pH 5.5-7.5)",
+        "fertilizer": "High potassium and phosphorus before flowering season",
+        "tips": "Do not water during flowering — it causes flower drop."
+    },
+    "Banana": {
+        "emoji": "🍌",
+        "planting_months": ["Any month"],
+        "harvest_months": ["9-12 months after planting"],
+        "days_to_harvest": "270-365 days",
+        "water": "3 times per week",
+        "sunlight": "8 hours daily",
+        "soil": "Rich, well-drained loam (pH 5.5-7.0)",
+        "fertilizer": "High potassium — apply every 2 months",
+        "tips": "Remove extra suckers, keep only 1-2 per plant for best yield."
+    },
+    "Rice": {
+        "emoji": "🌾",
+        "planting_months": ["March", "April", "September", "October"],
+        "harvest_months": ["July", "August", "January", "February"],
+        "days_to_harvest": "105-150 days",
+        "water": "Keep flooded 5cm deep until 2 weeks before harvest",
+        "sunlight": "8 hours daily",
+        "soil": "Clay or clay loam that retains water (pH 5.5-6.5)",
+        "fertilizer": "High nitrogen in 3 splits — basal, tillering, panicle",
+        "tips": "Drain field 2 weeks before harvest for easier harvesting."
+    }
+}
+
+@app.route('/api/crops', methods=['GET'])
+def get_crops():
+    crops = []
+    for name, data in CROP_DATA.items():
+        crops.append({
+            'name': name,
+            'emoji': data['emoji'],
+            'days_to_harvest': data['days_to_harvest']
+        })
+    return jsonify(crops)
+
+@app.route('/api/crops/<crop_name>', methods=['GET'])
+def get_crop_detail(crop_name):
+    crop = CROP_DATA.get(crop_name)
+    if not crop:
+        return jsonify({'error': 'Crop not found'}), 404
+    return jsonify({
+        'name': crop_name,
+        'emoji': crop['emoji'],
+        'planting_months': crop['planting_months'],
+        'harvest_months': crop['harvest_months'],
+        'days_to_harvest': crop['days_to_harvest'],
+        'water': crop['water'],
+        'sunlight': crop['sunlight'],
+        'soil': crop['soil'],
+        'fertilizer': crop['fertilizer'],
+        'tips': crop['tips']
+    })
 if __name__ == '__main__':
     app.run(debug=True)
     
