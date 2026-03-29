@@ -1,0 +1,5 @@
+agrixenova_model.keras
+class_names.json
+instance/
+__pycache__/
+*.pyc
